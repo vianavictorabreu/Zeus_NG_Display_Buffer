@@ -1,5 +1,5 @@
 import streamlit as st
-from zeus_display_parser_v3 import DLMSDisplayParser
+from zeus_display_parser_v2 import DLMSDisplayParser
 
 st.text("ZEUS-NG Smart Meter - Display Parser")
 hex_input = st.text_area("Cole o Payload HEX bruto do medidor:", value=" ")

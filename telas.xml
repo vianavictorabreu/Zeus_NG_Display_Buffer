@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Zeus NG Screens - Version 1 (tabela oficial, 387 itens).
+     Edite/adicione telas aqui: o parser le este arquivo automaticamente.
+     modo="mesclar" mantem o mapa embutido e sobrescreve o que estiver aqui;
+     modo="substituir" ignora o mapa embutido.
+     Codigo repetido: vale a PRIMEIRA ocorrencia do arquivo. -->
+<telas modo="mesclar">
+    <tela doc="1" codigo="0.1.0" abnt="23" nome="Billing_Counter" descricao="Contador de Reset de Demanda" obis_completo="1-1.0.0.1.0.255-2" hex="0100000100FF"/>
+    <tela doc="2" codigo="0.1.2.1" abnt="2A" nome="Last_Billing_Close_Time" descricao="Hora de Ocorrência do último fechamento de Fatura" obis_completo="1-1.0.0.1.2.255-2" hex="0100000102FF"/>
+    <tela doc="3" codigo="0.2.0" abnt="FC" nome="Short_Software_Version" descricao="Versão de software interna" obis_completo="1-0.1.96.1.146.255-2" hex="0100000200FF"/>
+    <tela doc="4" codigo="0.9.1" abnt="02" nome="Time" descricao="Hora" obis_completo="1-1.0.0.9.1.255-2" hex="0100000901FF"/>
+    <tela doc="5" codigo="0.9.2" abnt="01" nome="Date" descricao="Data" obis_completo="1-1.0.0.9.2.255-2" hex="0100000902FF"/>
+    <tela doc="6" codigo="1.2.0" abnt="54" nome="Active_Direct_Energy_Accumulated_Demand_Total_Value" descricao="Demanda acumulada ativa Total direta, mês atual" obis_completo="3-1.0.1.2.0.255-2" hex="0100010200FF"/>
+    <tela doc="7" codigo="1.2.1" abnt="17" nome="Active_Direct_Energy_Accumulated_Demand_T1_Value" descricao="Demanda acumulada ativa direta Ponta, mês atual" obis_completo="3-1.0.1.2.1.255-2" hex="0100010201FF"/>
+    <tela doc="8" codigo="1.2.2" abnt="21" nome="Active_Direct_Energy_Accumulated_Demand_T2_Value" descricao="Demanda acumulada ativa direta Fora Ponta, mês atual" obis_completo="3-1.0.1.2.2.255-2" hex="0100010202FF"/>
+    <tela doc="9" codigo="1.2.3" abnt="19" nome="Active_Direct_Energy_Accumulated_Demand_T3_Value" descricao="Demanda acumulada ativa direta Reservado, mês atual" obis_completo="3-1.0.1.2.3.255-2" hex="0100010203FF"/>
+    <tela doc="10" codigo="1.2.4" abnt="22" nome="Active_Direct_Energy_Accumulated_Demand_T4_Value" descricao="Demanda acumulada ativa direta 4º Posto, mês atual" obis_completo="3-1.0.1.2.4.255-2" hex="0100010204FF"/>
+    <tela doc="11" codigo="1.6.0" abnt="52" nome="Active_Direct_Energy_Maximum_Demand_Total_Value" descricao="Demanda máxima ativa Total direta, mês atual" obis_completo="4-1.0.1.6.0.255-2" hex="0100010600FF"/>
+    <tela doc="12" codigo="1.6.1" abnt="10" nome="Active_Direct_Energy_Maximum_Demand_T1_Value" descricao="Demanda máxima ativa direta Ponta, mês atual" obis_completo="4-1.0.1.6.1.255-2" hex="0100010601FF"/>
+    <tela doc="13" codigo="1.6.2" abnt="14" nome="Active_Direct_Energy_Maximum_Demand_T2_Value" descricao="Demanda máxima ativa direta Fora Ponta, mês atual" obis_completo="4-1.0.1.6.2.255-2" hex="0100010602FF"/>
+    <tela doc="14" codigo="1.6.3" abnt="12" nome="Active_Direct_Energy_Maximum_Demand_T3_Value" descricao="Demanda máxima ativa direta Reservado, mês atual" obis_completo="4-1.0.1.6.3.255-2" hex="0100010603FF"/>
+    <tela doc="15" codigo="1.6.4" abnt="15" nome="Active_Direct_Energy_Maximum_Demand_T4_Value" descricao="Demanda máxima ativa direta 4º Posto, mês atual" obis_completo="4-1.0.1.6.4.255-2" hex="0100010604FF"/>
+    <tela doc="16" codigo="1.7.0" abnt="Pt" nome="Active_Power_Q1_Q4" descricao="Potência ativa direta" obis_completo="3-1.0.1.7.0.255-2" hex="0100010700FF"/>
+    <tela doc="17" codigo="1.8.0" abnt="03" nome="Active_Direct_Energy_Total_Value" descricao="Energia ativa Total direta, mês atual" obis_completo="3-1.0.1.8.0.255-2" hex="0100010800FF"/>
+    <tela doc="18" codigo="1.8.1" abnt="04" nome="Active_Direct_Energy_T1_Value" descricao="Energia ativa direta Ponta, mês atual" obis_completo="3-1.0.1.8.1.255-2" hex="0100010801FF"/>
+    <tela doc="19" codigo="1.8.2" abnt="08" nome="Active_Direct_Energy_T2_Value" descricao="Energia ativa direta Fora Ponta, mês atual" obis_completo="3-1.0.1.8.2.255-2" hex="0100010802FF"/>
+    <tela doc="20" codigo="1.8.3" abnt="06" nome="Active_Direct_Energy_T3_Value" descricao="Energia ativa direta Reservado, mês atual" obis_completo="3-1.0.1.8.3.255-2" hex="0100010803FF"/>
+    <tela doc="21" codigo="1.8.4" abnt="09" nome="Active_Direct_Energy_T4_Value" descricao="Energia ativa direta 4º Posto, mês atual" obis_completo="3-1.0.1.8.4.255-2" hex="0100010804FF"/>
+    <tela doc="22" codigo="2.2.0" abnt="154" nome="Active_Reverse_Energy_Accumulated_Demand_Total_Value" descricao="Demanda acumulada ativa Total reversa, mês atual" obis_completo="3-1.0.2.2.0.255-2" hex="0100020200FF"/>
+    <tela doc="23" codigo="2.2.1" abnt="117" nome="Active_Reverse_Energy_Accumulated_Demand_T1_Value" descricao="Demanda acumulada ativa reversa Ponta, mês atual" obis_completo="3-1.0.2.2.1.255-2" hex="0100020201FF"/>
+    <tela doc="24" codigo="2.2.2" abnt="121" nome="Active_Reverse_Energy_Accumulated_Demand_T2_Value" descricao="Demanda acumulada ativa reversa Fora Ponta, mês atual" obis_completo="3-1.0.2.2.2.255-2" hex="0100020202FF"/>
+    <tela doc="25" codigo="2.2.3" abnt="119" nome="Active_Reverse_Energy_Accumulated_Demand_T3_Value" descricao="Demanda acumulada ativa reversa Reservado, mês atual" obis_completo="3-1.0.2.2.3.255-2" hex="0100020203FF"/>
+    <tela doc="26" codigo="2.2.4" abnt="122" nome="Active_Reverse_Energy_Accumulated_Demand_T4_Value" descricao="Demanda acumulada ativa reversa 4º Posto, mês atual" obis_completo="3-1.0.2.2.4.255-2" hex="0100020204FF"/>
+    <tela doc="27" codigo="2.6.0" abnt="152" nome="Active_Reverse_Energy_Maximum_Demand_Total_Value" descricao="Demanda máxima ativa Total reversa, mês atual" obis_completo="4-1.0.2.6.0.255-2" hex="0100020600FF"/>
+    <tela doc="28" codigo="2.6.1" abnt="110" nome="Active_Reverse_Energy_Maximum_Demand_T1_Value" descricao="Demanda máxima ativa reversa Ponta, mês atual" obis_completo="4-1.0.2.6.1.255-2" hex="0100020601FF"/>
+    <tela doc="29" codigo="2.6.2" abnt="114" nome="Active_Reverse_Energy_Maximum_Demand_T2_Value" descricao="Demanda máxima ativa reversa Fora Ponta, mês atual" obis_completo="4-1.0.2.6.2.255-2" hex="0100020602FF"/>
+    <tela doc="30" codigo="2.6.3" abnt="112" nome="Active_Reverse_Energy_Maximum_Demand_T3_Value" descricao="Demanda máxima ativa reversa Reservado, mês atual" obis_completo="4-1.0.2.6.3.255-2" hex="0100020603FF"/>
+    <tela doc="31" codigo="2.6.4" abnt="115" nome="Active_Reverse_Energy_Maximum_Demand_T4_Value" descricao="Demanda máxima ativa reversa 4º Posto, mês atual" obis_completo="4-1.0.2.6.4.255-2" hex="0100020604FF"/>
+    <tela doc="32" codigo="2.7.0" abnt="1Pt" nome="Active_Power_Q2_Q3" descricao="Potência ativa reversa" obis_completo="3-1.0.2.7.0.255-2" hex="0100020700FF"/>
+    <tela doc="33" codigo="2.8.0" abnt="103" nome="Active_Reverse_Energy_Total_Value" descricao="Energia ativa Total reversa, mês atual" obis_completo="3-1.0.2.8.0.255-2" hex="0100020800FF"/>
+    <tela doc="34" codigo="2.8.1" abnt="104" nome="Active_Reverse_Energy_T1_Value" descricao="Energia ativa reversa Ponta, mês atual" obis_completo="3-1.0.2.8.1.255-2" hex="0100020801FF"/>
+    <tela doc="35" codigo="2.8.2" abnt="108" nome="Active_Reverse_Energy_T2_Value" descricao="Energia ativa reversa Fora Ponta, mês atual" obis_completo="3-1.0.2.8.2.255-2" hex="0100020802FF"/>
+    <tela doc="36" codigo="2.8.3" abnt="106" nome="Active_Reverse_Energy_T3_Value" descricao="Energia ativa reversa Reservado, mês atual" obis_completo="3-1.0.2.8.3.255-2" hex="0100020803FF"/>
+    <tela doc="37" codigo="2.8.4" abnt="109" nome="Active_Reverse_Energy_T4_Value" descricao="Energia ativa reversa 4º Posto, mês atual" obis_completo="3-1.0.2.8.4.255-2" hex="0100020804FF"/>
+    <tela doc="38" codigo="3.7.0" abnt="rt" nome="Reactive_Power_Q1_Q2" descricao="Potência reativa direta" obis_completo="3-1.0.3.7.0.255-2" hex="0100030700FF"/>
+    <tela doc="39" codigo="4.7.0" abnt="1rt" nome="Reactive_Power_Q3_Q4" descricao="Potência reativa reversa" obis_completo="3-1.0.4.7.0.255-2" hex="0100040700FF"/>
+    <tela doc="40" codigo="5.2.0" abnt="64" nome="Reactive_Q1_Energy_Accumulated_Demand_Total_Value" descricao="Demanda acumulada reativa Total (Q1), mês atual" obis_completo="3-1.0.5.2.0.255-2" hex="0100050200FF"/>
+    <tela doc="41" codigo="5.2.1" abnt="41" nome="Reactive_Q1_Energy_Accumulated_Demand_T1_Value" descricao="Demanda acumulada reativa (Q1) Ponta, mês atual" obis_completo="3-1.0.5.2.1.255-2" hex="0100050201FF"/>
+    <tela doc="42" codigo="5.2.2" abnt="45" nome="Reactive_Q1_Energy_Accumulated_Demand_T2_Value" descricao="Demanda acumulada reativa (Q1) Fora Ponta, mês atual" obis_completo="3-1.0.5.2.2.255-2" hex="0100050202FF"/>
+    <tela doc="43" codigo="5.2.3" abnt="43" nome="Reactive_Q1_Energy_Accumulated_Demand_T3_Value" descricao="Demanda acumulada reativa (Q1) Reservado, mês atual" obis_completo="3-1.0.5.2.3.255-2" hex="0100050203FF"/>
+    <tela doc="44" codigo="5.2.4" abnt="46" nome="Reactive_Q1_Energy_Accumulated_Demand_T4_Value" descricao="Demanda acumulada reativa (Q1) 4º Posto, mês atual" obis_completo="3-1.0.5.2.4.255-2" hex="0100050204FF"/>
+    <tela doc="45" codigo="5.6.0" abnt="62" nome="Reactive_Q1_Energy_Maximum_Demand_Total_Value" descricao="Demanda máxima reativa Total (Q1), mês atual" obis_completo="4-1.0.5.6.0.255-2" hex="0100050600FF"/>
+    <tela doc="46" codigo="5.6.1" abnt="34" nome="Reactive_Q1_Energy_Maximum_Demand_T1_Value" descricao="Demanda máxima reativa (Q1) Ponta, mês atual" obis_completo="4-1.0.5.6.1.255-2" hex="0100050601FF"/>
+    <tela doc="47" codigo="5.6.2" abnt="38" nome="Reactive_Q1_Energy_Maximum_Demand_T2_Value" descricao="Demanda máxima reativa (Q1) Fora Ponta, mês atual" obis_completo="4-1.0.5.6.2.255-2" hex="0100050602FF"/>
+    <tela doc="48" codigo="5.6.3" abnt="36" nome="Reactive_Q1_Energy_Maximum_Demand_T3_Value" descricao="Demanda máxima reativa (Q1) Reservado, mês atual" obis_completo="4-1.0.5.6.3.255-2" hex="0100050603FF"/>
+    <tela doc="49" codigo="5.6.4" abnt="39" nome="Reactive_Q1_Energy_Maximum_Demand_T4_Value" descricao="Demanda máxima reativa (Q1) 4º Posto, mês atual" obis_completo="4-1.0.5.6.4.255-2" hex="0100050604FF"/>
+    <tela doc="50" codigo="5.8.0" abnt="24" nome="Reactive_Q1_Energy_Total_Value" descricao="Energia reativa Total (Q1), mês atual" obis_completo="3-1.0.5.8.0.255-2" hex="0100050800FF"/>
+    <tela doc="51" codigo="5.8.1" abnt="25" nome="Reactive_Q1_Energy_T1_Value" descricao="Energia reativa (Q1) Ponta, mês atual" obis_completo="3-1.0.5.8.1.255-2" hex="0100050801FF"/>
+    <tela doc="52" codigo="5.8.2" abnt="29" nome="Reactive_Q1_Energy_T2_Value" descricao="Energia reativa (Q1) Fora Ponta, mês atual" obis_completo="3-1.0.5.8.2.255-2" hex="0100050802FF"/>
+    <tela doc="53" codigo="5.8.3" abnt="27" nome="Reactive_Q1_Energy_T3_Value" descricao="Energia reativa (Q1) Reservado, mês atual" obis_completo="3-1.0.5.8.3.255-2" hex="0100050803FF"/>
+    <tela doc="54" codigo="5.8.4" abnt="30" nome="Reactive_Q1_Energy_T4_Value" descricao="Energia reativa (Q1) 4º Posto, mês atual" obis_completo="3-1.0.5.8.4.255-2" hex="0100050804FF"/>
+    <tela doc="55" codigo="6.2.0" abnt="37" nome="Reactive_Q2_Energy_Accumulated_Demand_Total_Value" descricao="Demanda acumulada reativa Total (Q2), mês atual" obis_completo="3-1.0.6.2.0.255-2" hex="0100060200FF"/>
+    <tela doc="56" codigo="6.2.1" abnt="3A" nome="Reactive_Q2_Energy_Accumulated_Demand_T1_Value" descricao="Demanda acumulada reativa (Q2) Ponta, mês atual" obis_completo="3-1.0.6.2.1.255-2" hex="0100060201FF"/>
+    <tela doc="57" codigo="6.2.2" abnt="3b" nome="Reactive_Q2_Energy_Accumulated_Demand_T2_Value" descricao="Demanda acumulada reativa (Q2) Fora Ponta, mês atual" obis_completo="3-1.0.6.2.2.255-2" hex="0100060202FF"/>
+    <tela doc="58" codigo="6.2.3" abnt="3C" nome="Reactive_Q2_Energy_Accumulated_Demand_T3_Value" descricao="Demanda acumulada reativa (Q2) Reservado, mês atual" obis_completo="3-1.0.6.2.3.255-2" hex="0100060203FF"/>
+    <tela doc="59" codigo="6.2.4" abnt="3d" nome="Reactive_Q2_Energy_Accumulated_Demand_T4_Value" descricao="Demanda acumulada reativa (Q2) 4º Posto, mês atual" obis_completo="3-1.0.6.2.4.255-2" hex="0100060204FF"/>
+    <tela doc="60" codigo="6.6.0" abnt="35" nome="Reactive_Q2_Energy_Maximum_Demand_Total_Value" descricao="Demanda máxima reativa Total (Q2), mês atual" obis_completo="4-1.0.6.6.0.255-2" hex="0100060600FF"/>
+    <tela doc="61" codigo="6.6.1" abnt="3E" nome="Reactive_Q2_Energy_Maximum_Demand_T1_Value" descricao="Demanda máxima reativa (Q2) Ponta, mês atual" obis_completo="4-1.0.6.6.1.255-2" hex="0100060601FF"/>
+    <tela doc="62" codigo="6.6.2" abnt="3F" nome="Reactive_Q2_Energy_Maximum_Demand_T2_Value" descricao="Demanda máxima reativa (Q2) Fora Ponta, mês atual" obis_completo="4-1.0.6.6.2.255-2" hex="0100060602FF"/>
+    <tela doc="63" codigo="6.6.3" abnt="3H" nome="Reactive_Q2_Energy_Maximum_Demand_T3_Value" descricao="Demanda máxima reativa (Q2) Reservado, mês atual" obis_completo="4-1.0.6.6.3.255-2" hex="0100060603FF"/>
+    <tela doc="64" codigo="6.6.4" abnt="3L" nome="Reactive_Q2_Energy_Maximum_Demand_T4_Value" descricao="Demanda máxima reativa (Q2) 4º Posto, mês atual" obis_completo="4-1.0.6.6.4.255-2" hex="0100060604FF"/>
+    <tela doc="65" codigo="6.8.0" abnt="131" nome="Reactive_Q2_Energy_Total_Value" descricao="Energia reativa Total (Q2), mês atual" obis_completo="3-1.0.6.8.0.255-2" hex="0100060800FF"/>
+    <tela doc="66" codigo="6.8.1" abnt="185" nome="Reactive_Q2_Energy_T1_Value" descricao="Energia reativa (Q2) Ponta, mês atual" obis_completo="3-1.0.6.8.1.255-2" hex="0100060801FF"/>
+    <tela doc="67" codigo="6.8.2" abnt="187" nome="Reactive_Q2_Energy_T2_Value" descricao="Energia reativa (Q2) Fora Ponta, mês atual" obis_completo="3-1.0.6.8.2.255-2" hex="0100060802FF"/>
+    <tela doc="68" codigo="6.8.3" abnt="186" nome="Reactive_Q2_Energy_T3_Value" descricao="Energia reativa (Q2) Reservado, mês atual" obis_completo="3-1.0.6.8.3.255-2" hex="0100060803FF"/>
+    <tela doc="69" codigo="6.8.4" abnt="189" nome="Reactive_Q2_Energy_T4_Value" descricao="Energia reativa (Q2) 4º Posto, mês atual" obis_completo="3-1.0.6.8.4.255-2" hex="0100060804FF"/>
+    <tela doc="70" codigo="7.2.0" abnt="164" nome="Reactive_Q3_Energy_Accumulated_Demand_Total_Value" descricao="Demanda acumulada reativa Total (Q3), mês atual" obis_completo="3-1.0.7.2.0.255-2" hex="0100070200FF"/>
+    <tela doc="71" codigo="7.2.1" abnt="141" nome="Reactive_Q3_Energy_Accumulated_Demand_T1_Value" descricao="Demanda acumulada reativa (Q3) Ponta, mês atual" obis_completo="3-1.0.7.2.1.255-2" hex="0100070201FF"/>
+    <tela doc="72" codigo="7.2.2" abnt="145" nome="Reactive_Q3_Energy_Accumulated_Demand_T2_Value" descricao="Demanda acumulada reativa (Q3) Fora Ponta, mês atual" obis_completo="3-1.0.7.2.2.255-2" hex="0100070202FF"/>
+    <tela doc="73" codigo="7.2.3" abnt="143" nome="Reactive_Q3_Energy_Accumulated_Demand_T3_Value" descricao="Demanda acumulada reativa (Q3) Reservado, mês atual" obis_completo="3-1.0.7.2.3.255-2" hex="0100070203FF"/>
+    <tela doc="74" codigo="7.2.4" abnt="146" nome="Reactive_Q3_Energy_Accumulated_Demand_T4_Value" descricao="Demanda acumulada reativa (Q3) 4º Posto, mês atual" obis_completo="3-1.0.7.2.4.255-2" hex="0100070204FF"/>
+    <tela doc="75" codigo="7.6.0" abnt="162" nome="Reactive_Q3_Energy_Maximum_Demand_Total_Value" descricao="Demanda máxima reativa Total (Q3), mês atual" obis_completo="4-1.0.7.6.0.255-2" hex="0100070600FF"/>
+    <tela doc="76" codigo="7.6.1" abnt="134" nome="Reactive_Q3_Energy_Maximum_Demand_T1_Value" descricao="Demanda máxima reativa (Q3) Ponta, mês atual" obis_completo="4-1.0.7.6.1.255-2" hex="0100070601FF"/>
+    <tela doc="77" codigo="7.6.2" abnt="138" nome="Reactive_Q3_Energy_Maximum_Demand_T2_Value" descricao="Demanda máxima reativa (Q3) Fora Ponta, mês atual" obis_completo="4-1.0.7.6.2.255-2" hex="0100070602FF"/>
+    <tela doc="78" codigo="7.6.3" abnt="136" nome="Reactive_Q3_Energy_Maximum_Demand_T3_Value" descricao="Demanda máxima reativa (Q3) Reservado, mês atual" obis_completo="4-1.0.7.6.3.255-2" hex="0100070603FF"/>
+    <tela doc="79" codigo="7.6.4" abnt="139" nome="Reactive_Q3_Energy_Maximum_Demand_T4_Value" descricao="Demanda máxima reativa (Q3) 4º Posto, mês atual" obis_completo="4-1.0.7.6.4.255-2" hex="0100070604FF"/>
+    <tela doc="80" codigo="7.8.0" abnt="124" nome="Reactive_Q3_Energy_Total_Value" descricao="Energia reativa Total (Q3), mês atual" obis_completo="3-1.0.7.8.0.255-2" hex="0100070800FF"/>
+    <tela doc="81" codigo="7.8.1" abnt="125" nome="Reactive_Q3_Energy_T1_Value" descricao="Energia reativa (Q3) Ponta, mês atual" obis_completo="3-1.0.7.8.1.255-2" hex="0100070801FF"/>
+    <tela doc="82" codigo="7.8.2" abnt="129" nome="Reactive_Q3_Energy_T2_Value" descricao="Energia reativa (Q3) Fora Ponta, mês atual" obis_completo="3-1.0.7.8.2.255-2" hex="0100070802FF"/>
+    <tela doc="83" codigo="7.8.3" abnt="127" nome="Reactive_Q3_Energy_T3_Value" descricao="Energia reativa (Q3) Reservado, mês atual" obis_completo="3-1.0.7.8.3.255-2" hex="0100070803FF"/>
+    <tela doc="84" codigo="7.8.4" abnt="130" nome="Reactive_Q3_Energy_T4_Value" descricao="Energia reativa (Q3) 4º Posto, mês atual" obis_completo="3-1.0.7.8.4.255-2" hex="0100070804FF"/>
+    <tela doc="85" codigo="8.2.0" abnt="137" nome="Reactive_Q4_Energy_Accumulated_Demand_Total_Value" descricao="Demanda acumulada reativa Total (Q4), mês atual" obis_completo="3-1.0.8.2.0.255-2" hex="0100080200FF"/>
+    <tela doc="86" codigo="8.2.1" abnt="13A" nome="Reactive_Q4_Energy_Accumulated_Demand_T1_Value" descricao="Demanda acumulada reativa (Q4) Ponta, mês atual" obis_completo="3-1.0.8.2.1.255-2" hex="0100080201FF"/>
+    <tela doc="87" codigo="8.2.2" abnt="13b" nome="Reactive_Q4_Energy_Accumulated_Demand_T2_Value" descricao="Demanda acumulada reativa (Q4) Fora Ponta, mês atual" obis_completo="3-1.0.8.2.2.255-2" hex="0100080202FF"/>
+    <tela doc="88" codigo="8.2.3" abnt="13C" nome="Reactive_Q4_Energy_Accumulated_Demand_T3_Value" descricao="Demanda acumulada reativa (Q4) Reservado, mês atual" obis_completo="3-1.0.8.2.3.255-2" hex="0100080203FF"/>
+    <tela doc="89" codigo="8.2.4" abnt="13d" nome="Reactive_Q4_Energy_Accumulated_Demand_T4_Value" descricao="Demanda acumulada reativa (Q4) 4º Posto, mês atual" obis_completo="3-1.0.8.2.4.255-2" hex="0100080204FF"/>
+    <tela doc="90" codigo="8.6.0" abnt="132" nome="Reactive_Q4_Energy_Maximum_Demand_Total_Value" descricao="Demanda máxima reativa Total (Q4), mês atual" obis_completo="4-1.0.8.6.0.255-2" hex="0100080600FF"/>
+    <tela doc="91" codigo="8.6.1" abnt="13E" nome="Reactive_Q4_Energy_Maximum_Demand_T1_Value" descricao="Demanda máxima reativa (Q4) Ponta, mês atual" obis_completo="4-1.0.8.6.1.255-2" hex="0100080601FF"/>
+    <tela doc="92" codigo="8.6.2" abnt="13F" nome="Reactive_Q4_Energy_Maximum_Demand_T2_Value" descricao="Demanda máxima reativa (Q4) Fora Ponta, mês atual" obis_completo="4-1.0.8.6.2.255-2" hex="0100080602FF"/>
+    <tela doc="93" codigo="8.6.3" abnt="13H" nome="Reactive_Q4_Energy_Maximum_Demand_T3_Value" descricao="Demanda máxima reativa (Q4) Reservado, mês atual" obis_completo="4-1.0.8.6.3.255-2" hex="0100080603FF"/>
+    <tela doc="94" codigo="8.6.4" abnt="13L" nome="Reactive_Q4_Energy_Maximum_Demand_T4_Value" descricao="Demanda máxima reativa (Q4) 4º Posto, mês atual" obis_completo="4-1.0.8.6.4.255-2" hex="0100080604FF"/>
+    <tela doc="95" codigo="8.8.0" abnt="31" nome="Reactive_Q4_Energy_Total_Value" descricao="Energia reativa Total (Q4), mês atual" obis_completo="3-1.0.8.8.0.255-2" hex="0100080800FF"/>
+    <tela doc="96" codigo="8.8.1" abnt="85" nome="Reactive_Q4_Energy_T1_Value" descricao="Energia reativa (Q4) Ponta, mês atual" obis_completo="3-1.0.8.8.1.255-2" hex="0100080801FF"/>
+    <tela doc="97" codigo="8.8.2" abnt="87" nome="Reactive_Q4_Energy_T2_Value" descricao="Energia reativa (Q4) Fora Ponta, mês atual" obis_completo="3-1.0.8.8.2.255-2" hex="0100080802FF"/>
+    <tela doc="98" codigo="8.8.3" abnt="86" nome="Reactive_Q4_Energy_T3_Value" descricao="Energia reativa (Q4) Reservado, mês atual" obis_completo="3-1.0.8.8.3.255-2" hex="0100080803FF"/>
+    <tela doc="99" codigo="8.8.4" abnt="89" nome="Reactive_Q4_Energy_T4_Value" descricao="Energia reativa (Q4) 4º Posto, mês atual" obis_completo="3-1.0.8.8.4.255-2" hex="0100080804FF"/>
+    <tela doc="100" codigo="8.8.8.8.8.8" abnt="8.8.8.8.8.8" nome="Display_Test" descricao="Teste do Mostrador" obis_completo="1-0.0.96.2.221.255-2" hex="00006002DDFF"/>
+    <tela doc="101" codigo="9.7.0" abnt="At" nome="Apparent_Power_Q1_Q4" descricao="Potência aparente direta" obis_completo="3-1.0.9.7.0.255-2" hex="0100090700FF"/>
+    <tela doc="102" codigo="10.7.0" abnt="1At" nome="Apparent_Power_Q2_Q3" descricao="Potência aparente reversa" obis_completo="3-1.0.10.7.0.255-2" hex="01000A0700FF"/>
+    <tela doc="103" codigo="13.7.0" abnt="ot" nome="Power_Factor" descricao="Fator de Potência" obis_completo="3-1.0.13.7.0.255-2" hex="01000D0700FF"/>
+    <tela doc="104" codigo="14.7.0" abnt="Fn" nome="Frequency" descricao="Frequência" obis_completo="3-1.0.14.7.0.255-2" hex="01000E0700FF"/>
+    <tela doc="105" codigo="21.7.0" abnt="PA" nome="Active_Power_Q1_Q4_L1" descricao="Potência ativa direta da fase A" obis_completo="3-1.0.21.7.0.255-2" hex="0100150700FF"/>
+    <tela doc="106" codigo="22.7.0" abnt="1PA" nome="Active_Power_Q2_Q3_L1" descricao="Potência ativa reversa da fase A" obis_completo="3-1.0.22.7.0.255-2" hex="0100160700FF"/>
+    <tela doc="107" codigo="23.7.0" abnt="rA" nome="Reactive_Power_Q1_Q2_L1" descricao="Potência reativa direta da fase A" obis_completo="3-1.0.23.7.0.255-2" hex="0100170700FF"/>
+    <tela doc="108" codigo="24.7.0" abnt="1rA" nome="Reactive_Power_Q3_Q4_L1" descricao="Potência reativa reversa da fase A" obis_completo="3-1.0.24.7.0.255-2" hex="0100180700FF"/>
+    <tela doc="109" codigo="29.7.0" abnt="AA" nome="Apparent_Power_Q1_Q4_L1" descricao="Potência aparente direta da fase A" obis_completo="3-1.0.29.7.0.255-2" hex="01001D0700FF"/>
+    <tela doc="110" codigo="30.7.0" abnt="1AA" nome="Apparent_Power_Q2_Q3_L1" descricao="Potência aparente reversa da fase A" obis_completo="3-1.0.30.7.0.255-2" hex="01001E0700FF"/>
+    <tela doc="111" codigo="31.7.0" abnt="1A" nome="Current_L1" descricao="Corrente da fase A" obis_completo="3-1.0.31.7.0.255-2" hex="01001F0700FF"/>
+    <tela doc="112" codigo="32.7.0" abnt="UA" nome="Voltage_L1" descricao="Tensão da fase A" obis_completo="3-1.0.32.7.0.255-2" hex="0100200700FF"/>
+    <tela doc="113" codigo="33.7.0" abnt="oA" nome="Power_Factor_L1" descricao="Fator de Potência da fase A" obis_completo="3-1.0.33.7.0.255-2" hex="0100210700FF"/>
+    <tela doc="114" codigo="41.7.0" abnt="Pb" nome="Active_Power_Q1_Q4_L2" descricao="Potência ativa direta da fase B" obis_completo="3-1.0.41.7.0.255-2" hex="0100290700FF"/>
+    <tela doc="115" codigo="42.7.0" abnt="1Pb" nome="Active_Power_Q2_Q3_L2" descricao="Potência ativa reversa da fase B" obis_completo="3-1.0.42.7.0.255-2" hex="01002A0700FF"/>
+    <tela doc="116" codigo="43.7.0" abnt="rb" nome="Reactive_Power_Q1_Q2_L2" descricao="Potência reativa direta da fase B" obis_completo="3-1.0.43.7.0.255-2" hex="01002B0700FF"/>
+    <tela doc="117" codigo="44.7.0" abnt="1rb" nome="Reactive_Power_Q3_Q4_L2" descricao="Potência reativa reversa da fase B" obis_completo="3-1.0.44.7.0.255-2" hex="01002C0700FF"/>
+    <tela doc="118" codigo="49.7.0" abnt="Ab" nome="Apparent_Power_Q1_Q4_L2" descricao="Potência aparente direta da fase B" obis_completo="3-1.0.49.7.0.255-2" hex="0100310700FF"/>
+    <tela doc="119" codigo="50.7.0" abnt="1Ab" nome="Apparent_Power_Q2_Q3_L2" descricao="Potência aparente reversa da fase B" obis_completo="3-1.0.50.7.0.255-2" hex="0100320700FF"/>
+    <tela doc="120" codigo="51.7.0" abnt="1b" nome="Current_L2" descricao="Corrente da fase B" obis_completo="3-1.0.51.7.0.255-2" hex="0100330700FF"/>
+    <tela doc="121" codigo="52.7.0" abnt="Ub" nome="Voltage_L2" descricao="Tensão da fase B" obis_completo="3-1.0.52.7.0.255-2" hex="0100340700FF"/>
+    <tela doc="122" codigo="53.7.0" abnt="ob" nome="Power_Factor_L2" descricao="Fator de Potência da fase B" obis_completo="3-1.0.53.7.0.255-2" hex="0100350700FF"/>
+    <tela doc="123" codigo="61.7.0" abnt="PC" nome="Active_Power_Q1_Q4_L3" descricao="Potência ativa direta da fase C" obis_completo="3-1.0.61.7.0.255-2" hex="01003D0700FF"/>
+    <tela doc="124" codigo="62.7.0" abnt="1PC" nome="Active_Power_Q2_Q3_L3" descricao="Potência ativa reversa da fase C" obis_completo="3-1.0.62.7.0.255-2" hex="01003E0700FF"/>
+    <tela doc="125" codigo="63.7.0" abnt="rC" nome="Reactive_Power_Q1_Q2_L3" descricao="Potência reativa direta da fase C" obis_completo="3-1.0.63.7.0.255-2" hex="01003F0700FF"/>
+    <tela doc="126" codigo="64.7.0" abnt="1rC" nome="Reactive_Power_Q3_Q4_L3" descricao="Potência reativa reversa da fase C" obis_completo="3-1.0.64.7.0.255-2" hex="0100400700FF"/>
+    <tela doc="127" codigo="69.7.0" abnt="AC" nome="Apparent_Power_Q1_Q4_L3" descricao="Potência aparente direta da fase C" obis_completo="3-1.0.69.7.0.255-2" hex="0100450700FF"/>
+    <tela doc="128" codigo="70.7.0" abnt="1AC" nome="Apparent_Power_Q2_Q3_L3" descricao="Potência aparente reversa da fase C" obis_completo="3-1.0.70.7.0.255-2" hex="0100460700FF"/>
+    <tela doc="129" codigo="71.7.0" abnt="1C" nome="Current_L3" descricao="Corrente da fase C" obis_completo="3-1.0.71.7.0.255-2" hex="0100470700FF"/>
+    <tela doc="130" codigo="72.7.0" abnt="UC" nome="Voltage_L3" descricao="Tensão da fase C" obis_completo="3-1.0.72.7.0.255-2" hex="0100480700FF"/>
+    <tela doc="131" codigo="73.7.0" abnt="oC" nome="Power_Factor_L3" descricao="Fator de Potência da fase C" obis_completo="3-1.0.73.7.0.255-2" hex="0100490700FF"/>
+    <tela doc="132" codigo="81.7.1" abnt="C0" nome="Angle_L1_L2" descricao="Ângulo entre fase A e fase B" obis_completo="3-1.0.81.7.1.255-2" hex="0100510701FF"/>
+    <tela doc="133" codigo="81.7.2" abnt="C1" nome="Angle_L1_L3" descricao="Ângulo entre fase C e fase A" obis_completo="3-1.0.81.7.2.255-2" hex="0100510702FF"/>
+    <tela doc="134" codigo="81.7.12" abnt="C2" nome="Angle_L2_L3" descricao="Ângulo entre fase B e fase C" obis_completo="3-1.0.81.7.12.255-2" hex="010051070CFF"/>
+    <tela doc="135" codigo="81.7.40" abnt="C3" nome="Angle_L1" descricao="Ângulo entre Tensão e Corrente da fase A" obis_completo="3-1.0.81.7.40.255-2" hex="0100510728FF"/>
+    <tela doc="136" codigo="81.7.51" abnt="C4" nome="Angle_L2" descricao="Ângulo entre Tensão e Corrente da fase B" obis_completo="3-1.0.81.7.51.255-2" hex="0100510733FF"/>
+    <tela doc="137" codigo="81.7.62" abnt="C5" nome="Angle_L3" descricao="Ângulo entre Tensão e Corrente da fase C" obis_completo="3-1.0.81.7.62.255-2" hex="010051073EFF"/>
+    <tela doc="138" codigo="C.1.0" abnt="33" nome="Meter_Serial_Number" descricao="Número serial do medidor" obis_completo="1-0.0.96.1.0.255-2" hex="0000600100FF"/>
+    <tela doc="139" codigo="96.0" abnt="96" nome="RTP_Numerator" descricao="Numerador RTP" obis_completo="1-1.0.0.4.3.255-2" hex="0100000403FF"/>
+    <tela doc="140" codigo="96.1" abnt="196" nome="RTP_Denominator" descricao="Denominador RTP" obis_completo="1-1.0.0.4.6.255-2" hex="0100000406FF"/>
+    <tela doc="141" codigo="97.0" abnt="97" nome="RTC_Numerator" descricao="Numerador RTC" obis_completo="1-1.0.0.4.2.255-2" hex="0100000402FF"/>
+    <tela doc="142" codigo="97.1" abnt="197" nome="RTC_Denominator" descricao="Denominador RTC" obis_completo="1-1.0.0.4.5.255-2" hex="0100000405FF"/>
+    <tela doc="143" codigo="12.152.1" abnt="1b1" nome="DRPa_Max" descricao="1º Último DRP calculado" obis_completo="3-1.0.12.152.0.101-2" hex="01000C980065"/>
+    <tela doc="144" codigo="12.152.2" abnt="1b2" nome="DRPa_Max_2" descricao="2º Último DRP calculado" obis_completo="3-1.0.12.152.0.102-2" hex="01000C980066"/>
+    <tela doc="145" codigo="12.152.3" abnt="1b3" nome="DRPa_Max_3" descricao="3º Último DRP calculado" obis_completo="3-1.0.12.152.0.103-2" hex="01000C980067"/>
+    <tela doc="146" codigo="12.152.4" abnt="1b4" nome="DRPa_Max_4" descricao="4º Último DRP calculado" obis_completo="3-1.0.12.152.0.104-2" hex="01000C980068"/>
+    <tela doc="147" codigo="12.152.5" abnt="1b5" nome="DRPa_Max_5" descricao="5º Último DRP calculado" obis_completo="3-1.0.12.152.0.105-2" hex="01000C980069"/>
+    <tela doc="148" codigo="12.152.6" abnt="1b6" nome="DRPa_Max_6" descricao="6º Último DRP calculado" obis_completo="3-1.0.12.152.0.106-2" hex="01000C98006A"/>
+    <tela doc="149" codigo="12.152.7" abnt="1b7" nome="DRPa_Max_7" descricao="7º Último DRP calculado" obis_completo="3-1.0.12.152.0.107-2" hex="01000C98006B"/>
+    <tela doc="150" codigo="12.152.8" abnt="1b8" nome="DRPa_Max_8" descricao="8º Último DRP calculado" obis_completo="3-1.0.12.152.0.108-2" hex="01000C98006C"/>
+    <tela doc="151" codigo="12.152.9" abnt="1b9" nome="DRPa_Max_9" descricao="9º Último DRP calculado" obis_completo="3-1.0.12.152.0.109-2" hex="01000C98006D"/>
+    <tela doc="152" codigo="12.152.A" abnt="1bA" nome="DRPa_Max_10" descricao="10º Último DRP calculado" obis_completo="3-1.0.12.152.0.110-2" hex="01000C98006E"/>
+    <tela doc="153" codigo="12.152.b" abnt="1bb" nome="DRPa_Max_11" descricao="11º Último DRP calculado" obis_completo="3-1.0.12.152.0.111-2" hex="01000C98006F"/>
+    <tela doc="154" codigo="12.152.C" abnt="1bC" nome="DRPa_Max_12" descricao="12º Último DRP calculado" obis_completo="3-1.0.12.152.0.112-2" hex="01000C980070"/>
+    <tela doc="155" codigo="12.153.1" abnt="1C1" nome="DRCa_Max" descricao="1º Último DRC calculado" obis_completo="3-1.0.12.153.0.101-2" hex="01000C990065"/>
+    <tela doc="156" codigo="12.153.2" abnt="1C2" nome="DRCa_Max_2" descricao="2º Último DRC calculado" obis_completo="3-1.0.12.153.0.102-2" hex="01000C990066"/>
+    <tela doc="157" codigo="12.153.3" abnt="1C3" nome="DRCa_Max_3" descricao="3º Último DRC calculado" obis_completo="3-1.0.12.153.0.103-2" hex="01000C990067"/>
+    <tela doc="158" codigo="12.153.4" abnt="1C4" nome="DRCa_Max_4" descricao="4º Último DRC calculado" obis_completo="3-1.0.12.153.0.104-2" hex="01000C990068"/>
+    <tela doc="159" codigo="12.153.5" abnt="1C5" nome="DRCa_Max_5" descricao="5º Último DRC calculado" obis_completo="3-1.0.12.153.0.105-2" hex="01000C990069"/>
+    <tela doc="160" codigo="12.153.6" abnt="1C6" nome="DRCa_Max_6" descricao="6º Último DRC calculado" obis_completo="3-1.0.12.153.0.106-2" hex="01000C99006A"/>
+    <tela doc="161" codigo="12.153.7" abnt="1C7" nome="DRCa_Max_7" descricao="7º Último DRC calculado" obis_completo="3-1.0.12.153.0.107-2" hex="01000C99006B"/>
+    <tela doc="162" codigo="12.153.8" abnt="1C8" nome="DRCa_Max_8" descricao="8º Último DRC calculado" obis_completo="3-1.0.12.153.0.108-2" hex="01000C99006C"/>
+    <tela doc="163" codigo="12.153.9" abnt="1C9" nome="DRCa_Max_9" descricao="9º Último DRC calculado" obis_completo="3-1.0.12.153.0.109-2" hex="01000C99006D"/>
+    <tela doc="164" codigo="12.153.A" abnt="1CA" nome="DRCa_Max_10" descricao="10º Último DRC calculado" obis_completo="3-1.0.12.153.0.110-2" hex="01000C99006E"/>
+    <tela doc="165" codigo="12.153.b" abnt="1Cb" nome="DRCa_Max_11" descricao="11º Último DRC calculado" obis_completo="3-1.0.12.153.0.111-2" hex="01000C99006F"/>
+    <tela doc="166" codigo="12.153.C" abnt="1CC" nome="DRCa_Max_12" descricao="12º Último DRC calculado" obis_completo="3-1.0.12.153.0.112-2" hex="01000C990070"/>
+    <tela doc="167" codigo="12.140.0" abnt="dP" nome="DRPm" descricao="DRP do Mês Atual" obis_completo="3-1.0.12.140.0.255-2" hex="01000C8C00FF"/>
+    <tela doc="168" codigo="12.140.1" abnt="1dP" nome="DRPm_Last_Month" descricao="DRP do Último Mês Calculado" obis_completo="3-1.0.12.140.0.101-2" hex="01000C8C0065"/>
+    <tela doc="169" codigo="12.141.0" abnt="dC" nome="DRCm" descricao="DRC do Mês Atual" obis_completo="3-1.0.12.141.0.255-2" hex="01000C8D00FF"/>
+    <tela doc="170" codigo="12.141.1" abnt="1dC" nome="DRCm_Last_Month" descricao="DRC do Último Mês Calculado" obis_completo="3-1.0.12.141.0.101-2" hex="01000C8D0065"/>
+    <tela doc="171" codigo="32.152.0" abnt="r1" nome="DRPa_L1" descricao="Último DRP para fase A" obis_completo="3-1.0.32.152.0.255-2" hex="0100209800FF"/>
+    <tela doc="172" codigo="52.152.0" abnt="r2" nome="DRPa_L2" descricao="Último DRP para fase B" obis_completo="3-1.0.52.152.0.255-2" hex="0100349800FF"/>
+    <tela doc="173" codigo="72.152.0" abnt="r3" nome="DRPa_L3" descricao="Último DRP para fase C" obis_completo="3-1.0.72.152.0.255-2" hex="0100489800FF"/>
+    <tela doc="174" codigo="32.153.0" abnt="r4" nome="DRCa_L1" descricao="Último DRC para fase A" obis_completo="3-1.0.32.153.0.255-2" hex="0100209900FF"/>
+    <tela doc="175" codigo="52.153.0" abnt="r5" nome="DRCa_L2" descricao="Último DRC para fase B" obis_completo="3-1.0.52.153.0.255-2" hex="0100349900FF"/>
+    <tela doc="176" codigo="72.153.0" abnt="r6" nome="DRCa_L3" descricao="Último DRC para fase C" obis_completo="3-1.0.72.153.0.255-2" hex="0100489900FF"/>
+    <tela doc="177" codigo="12.204.1" abnt="1t1" nome="DRP_DRC_Time_1/DRP_DRC_Date_1" descricao="Data/Hora do 1º Último DRP/DRC Calculado" obis_completo="1-1.0.12.204.0.101-2" hex="01000CCC0065"/>
+    <tela doc="178" codigo="12.204.2" abnt="1t2" nome="DRP_DRC_Time_2/DRP_DRC_Date_2" descricao="Data/Hora do 2º Último DRP/DRC Calculado" obis_completo="1-1.0.12.204.0.102-2" hex="01000CCC0066"/>
+    <tela doc="179" codigo="12.204.3" abnt="1t3" nome="DRP_DRC_Time_3/DRP_DRC_Date_3" descricao="Data/Hora do 3º Último DRP/DRC Calculado" obis_completo="1-1.0.12.204.0.103-2" hex="01000CCC0067"/>
+    <tela doc="180" codigo="12.204.4" abnt="1t4" nome="DRP_DRC_Time_4/DRP_DRC_Date_4" descricao="Data/Hora do 4º Último DRP/DRC Calculado" obis_completo="1-1.0.12.204.0.104-2" hex="01000CCC0068"/>
+    <tela doc="181" codigo="12.204.5" abnt="1t5" nome="DRP_DRC_Time_5/DRP_DRC_Date_5" descricao="Data/Hora do 5º Último DRP/DRC Calculado" obis_completo="1-1.0.12.204.0.105-2" hex="01000CCC0069"/>
+    <tela doc="182" codigo="12.204.6" abnt="1t6" nome="DRP_DRC_Time_6/DRP_DRC_Date_6" descricao="Data/Hora do 6º Último DRP/DRC Calculado" obis_completo="1-1.0.12.204.0.106-2" hex="01000CCC006A"/>
+    <tela doc="183" codigo="12.204.7" abnt="1t7" nome="DRP_DRC_Time_7/DRP_DRC_Date_7" descricao="Data/Hora do 7º Último DRP/DRC Calculado" obis_completo="1-1.0.12.204.0.107-2" hex="01000CCC006B"/>
+    <tela doc="184" codigo="12.204.8" abnt="1t8" nome="DRP_DRC_Time_8/DRP_DRC_Date_8" descricao="Data/Hora do 8º Último DRP/DRC Calculado" obis_completo="1-1.0.12.204.0.108-2" hex="01000CCC006C"/>
+    <tela doc="185" codigo="12.204.9" abnt="1t9" nome="DRP_DRC_Time_9/DRP_DRC_Date_9" descricao="Data/Hora do 9º Último DRP/DRC Calculado" obis_completo="1-1.0.12.204.0.109-2" hex="01000CCC006D"/>
+    <tela doc="186" codigo="12.204.A" abnt="1tA" nome="DRP_DRC_Time_10/DRP_DRC_Date_10" descricao="Data/Hora do 10º Último DRP/DRC Calculado" obis_completo="1-1.0.12.204.0.110-2" hex="01000CCC006E"/>
+    <tela doc="187" codigo="12.204.b" abnt="1tb" nome="DRP_DRC_Time_11/DRP_DRC_Date_11" descricao="Data/Hora do 11º Último DRP/DRC Calculado" obis_completo="1-1.0.12.204.0.111-2" hex="01000CCC006F"/>
+    <tela doc="188" codigo="12.204.C" abnt="1tC" nome="DRP_DRC_Time_12/DRP_DRC_Date_12" descricao="Data/Hora do 12º Último DRP/DRC Calculado" obis_completo="1-1.0.12.204.0.112-2" hex="01000CCC0070"/>
+    <tela doc="189" codigo="12.198.0" abnt="d1" nome="DIC_Current_Month" descricao="DIC do Mês Atual" obis_completo="3-1.0.12.198.0.255-2" hex="01000CC600FF"/>
+    <tela doc="190" codigo="12.199.0" abnt="F1" nome="FIC_Current_Month" descricao="FIC do Mês Atual" obis_completo="3-1.0.12.199.0.255-2" hex="01000CC700FF"/>
+    <tela doc="191" codigo="12.200.0" abnt="dn" nome="DMIC_Current_Month" descricao="DMIC do Mês Atual" obis_completo="4-1.0.12.200.0.255-2" hex="01000CC800FF"/>
+    <tela doc="192" codigo="12.198.1" abnt="1d1" nome="DIC_Last_Month" descricao="DIC do Último Mês" obis_completo="3-1.0.12.198.0.101-2" hex="01000CC60065"/>
+    <tela doc="193" codigo="12.199.1" abnt="1F1" nome="FIC_Last_Month" descricao="FIC do Último Mês" obis_completo="3-1.0.12.199.0.101-2" hex="01000CC70065"/>
+    <tela doc="194" codigo="12.200.1" abnt="1dn" nome="DMIC_Last_Month" descricao="DMIC do Último Mês" obis_completo="4-1.0.12.200.0.101-2" hex="01000CC80065"/>
+    <tela doc="195" codigo="132.8.0" abnt="65" nome="UFER_Total" descricao="UFER Total" obis_completo="3-1.0.132.8.0.255-2" hex="0100840800FF"/>
+    <tela doc="196" codigo="132.8.1" abnt="66" nome="UFER_T1" descricao="UFER Ponta" obis_completo="3-1.0.132.8.1.255-2" hex="0100840801FF"/>
+    <tela doc="197" codigo="132.8.2" abnt="68" nome="UFER_T2" descricao="UFER Fora Ponta" obis_completo="3-1.0.132.8.2.255-2" hex="0100840802FF"/>
+    <tela doc="198" codigo="132.8.3" abnt="67" nome="UFER_T3" descricao="UFER Reservado" obis_completo="3-1.0.132.8.3.255-2" hex="0100840803FF"/>
+    <tela doc="199" codigo="132.8.4" abnt="6A" nome="UFER_T4" descricao="UFER 4º posto" obis_completo="3-1.0.132.8.4.255-2" hex="0100840804FF"/>
+    <tela doc="200" codigo="128.6.0" abnt="78" nome="DMCR_Total_Value" descricao="DMCR máxima Geral" obis_completo="4-1.0.128.6.0.255-2" hex="0100800600FF"/>
+    <tela doc="201" codigo="128.6.1" abnt="69" nome="DMCR_T1_Value" descricao="DMCR Ponta" obis_completo="4-1.0.128.6.1.255-2" hex="0100800601FF"/>
+    <tela doc="202" codigo="128.6.2" abnt="71" nome="DMCR_T2_Value" descricao="DMCR Fora Ponta" obis_completo="4-1.0.128.6.2.255-2" hex="0100800602FF"/>
+    <tela doc="203" codigo="128.6.3" abnt="70" nome="DMCR_T3_Value" descricao="DMCR Reservado" obis_completo="4-1.0.128.6.3.255-2" hex="0100800603FF"/>
+    <tela doc="204" codigo="128.6.4" abnt="7A" nome="DMCR_T4_Value" descricao="DMCR 4º Posto" obis_completo="4-1.0.128.6.4.255-2" hex="0100800604FF"/>
+    <tela doc="205" codigo="128.2.0" abnt="80" nome="Accumulated_DMCR_Total" descricao="DMCR acumulada Geral" obis_completo="3-1.0.128.2.0.255-2" hex="0100800200FF"/>
+    <tela doc="206" codigo="128.2.1" abnt="73" nome="Accumulated_DMCR_T1" descricao="DMCR acumulada Ponta" obis_completo="3-1.0.128.2.1.255-2" hex="0100800201FF"/>
+    <tela doc="207" codigo="128.2.2" abnt="75" nome="Accumulated_DMCR_T2" descricao="DMCR acumulada Fora Ponta" obis_completo="3-1.0.128.2.2.255-2" hex="0100800202FF"/>
+    <tela doc="208" codigo="128.2.3" abnt="74" nome="Accumulated_DMCR_T3" descricao="DMCR acumulada Reservado" obis_completo="3-1.0.128.2.3.255-2" hex="0100800203FF"/>
+    <tela doc="209" codigo="128.2.4" abnt="7b" nome="Accumulated_DMCR_T4" descricao="DMCR acumulada 4º Posto" obis_completo="3-1.0.128.2.4.255-2" hex="0100800204FF"/>
+    <tela doc="210" codigo="128.14.0" abnt="72" nome="DMCR_Last_Reactive_Interval" descricao="DMCR do Último Intervalo reativa" obis_completo="3-1.0.128.14.0.255-2" hex="0100800E00FF"/>
+    <tela doc="211" codigo="128.14.1" abnt="7C" nome="DMCR_Last_Reactive_Interval_T1" descricao="DMCR do Último Intervalo reativa T1" obis_completo="3-1.0.128.14.1.255-2" hex="0100800E01FF"/>
+    <tela doc="212" codigo="128.14.2" abnt="7d" nome="DMCR_Last_Reactive_Interval_T2" descricao="DMCR do Último Intervalo reativa T2" obis_completo="3-1.0.128.14.2.255-2" hex="0100800E02FF"/>
+    <tela doc="213" codigo="128.14.3" abnt="7E" nome="DMCR_Last_Reactive_Interval_T3" descricao="DMCR do Último Intervalo reativa T3" obis_completo="3-1.0.128.14.3.255-2" hex="0100800E03FF"/>
+    <tela doc="214" codigo="128.14.4" abnt="7F" nome="DMCR_Last_Reactive_Interval_T4" descricao="DMCR do Último Intervalo reativa T4" obis_completo="3-1.0.128.14.4.255-2" hex="0100800E04FF"/>
+    <tela doc="215" codigo="91.7.0" abnt="1n" nome="Current_N" descricao="Corrente de neutro" obis_completo="3-1.0.91.7.0.255-2" hex="01005B0700FF"/>
+    <tela doc="216" codigo="2.6.1" abnt="110" nome="Active_Reverse_Energy_Maximum_Demand_T1_Capture_Time" descricao="Active Max Demand Time (-) T1" obis_completo="4-1.0.2.6.1.255-5" hex="0100020601FF"/>
+    <tela doc="217" codigo="2.6.2" abnt="114" nome="Active_Reverse_Energy_Maximum_Demand_T2_Capture_Time" descricao="Active Max Demand Time (-) T2" obis_completo="4-1.0.2.6.2.255-5" hex="0100020602FF"/>
+    <tela doc="218" codigo="2.6.3" abnt="112" nome="Active_Reverse_Energy_Maximum_Demand_T3_Capture_Time" descricao="Active Max Demand Time (-) T3" obis_completo="4-1.0.2.6.3.255-5" hex="0100020603FF"/>
+    <tela doc="219" codigo="2.6.4" abnt="115" nome="Active_Reverse_Energy_Maximum_Demand_T4_Capture_Time" descricao="Active Max Demand Time (-) T4" obis_completo="4-1.0.2.6.4.255-5" hex="0100020604FF"/>
+    <tela doc="220" codigo="2.6.0" abnt="152" nome="Active_Reverse_Energy_Maximum_Demand_Total_Capture_Time" descricao="Active Max Demand Time (-) Total" obis_completo="4-1.0.2.6.0.255-5" hex="0100020600FF"/>
+    <tela doc="221" codigo="1.6.1" abnt="10" nome="Active_Direct_Energy_Maximum_Demand_T1_Capture_Time" descricao="Active Max Demand Time (+) T1" obis_completo="4-1.0.1.6.1.255-5" hex="0100010601FF"/>
+    <tela doc="222" codigo="1.6.2" abnt="14" nome="Active_Direct_Energy_Maximum_Demand_T2_Capture_Time" descricao="Active Max Demand Time (+) T2" obis_completo="4-1.0.1.6.2.255-5" hex="0100010602FF"/>
+    <tela doc="223" codigo="1.6.3" abnt="12" nome="Active_Direct_Energy_Maximum_Demand_T3_Capture_Time" descricao="Active Max Demand Time (+) T3" obis_completo="4-1.0.1.6.3.255-5" hex="0100010603FF"/>
+    <tela doc="224" codigo="1.6.4" abnt="15" nome="Active_Direct_Energy_Maximum_Demand_T4_Capture_Time" descricao="Active Max Demand Time (+) T4" obis_completo="4-1.0.1.6.4.255-5" hex="0100010604FF"/>
+    <tela doc="225" codigo="1.6.0" abnt="52" nome="Active_Direct_Energy_Maximum_Demand_Total_Capture_Time" descricao="Active Max Demand Time (+) Total" obis_completo="4-1.0.1.6.0.255-5" hex="0100010600FF"/>
+    <tela doc="226" codigo="5.6.1" abnt="34" nome="Reactive_Q1_Energy_Maximum_Demand_T1_Capture_Time" descricao="Reactive Max Demand Time (Q1) T1" obis_completo="4-1.0.5.6.1.255-5" hex="0100050601FF"/>
+    <tela doc="227" codigo="5.6.2" abnt="38" nome="Reactive_Q1_Energy_Maximum_Demand_T2_Capture_Time" descricao="Reactive Max Demand Time (Q1) T2" obis_completo="4-1.0.5.6.2.255-5" hex="0100050602FF"/>
+    <tela doc="228" codigo="5.6.3" abnt="36" nome="Reactive_Q1_Energy_Maximum_Demand_T3_Capture_Time" descricao="Reactive Max Demand Time (Q1) T3" obis_completo="4-1.0.5.6.3.255-5" hex="0100050603FF"/>
+    <tela doc="229" codigo="5.6.4" abnt="39" nome="Reactive_Q1_Energy_Maximum_Demand_T4_Capture_Time" descricao="Reactive Max Demand Time (Q1) T4" obis_completo="4-1.0.5.6.4.255-5" hex="0100050604FF"/>
+    <tela doc="230" codigo="5.6.0" abnt="62" nome="Reactive_Q1_Energy_Maximum_Demand_Total_Capture_Time" descricao="Reactive Max Demand Time (Q1) Total" obis_completo="4-1.0.5.6.0.255-5" hex="0100050600FF"/>
+    <tela doc="231" codigo="6.6.1" abnt="3E" nome="Reactive_Q2_Energy_Maximum_Demand_T1_Capture_Time" descricao="Reactive Max Demand Time (Q2) T1" obis_completo="4-1.0.6.6.1.255-5" hex="0100060601FF"/>
+    <tela doc="232" codigo="6.6.2" abnt="3F" nome="Reactive_Q2_Energy_Maximum_Demand_T2_Capture_Time" descricao="Reactive Max Demand Time (Q2) T2" obis_completo="4-1.0.6.6.2.255-5" hex="0100060602FF"/>
+    <tela doc="233" codigo="6.6.3" abnt="3H" nome="Reactive_Q2_Energy_Maximum_Demand_T3_Capture_Time" descricao="Reactive Max Demand Time (Q2) T3" obis_completo="4-1.0.6.6.3.255-5" hex="0100060603FF"/>
+    <tela doc="234" codigo="6.6.4" abnt="3L" nome="Reactive_Q2_Energy_Maximum_Demand_T4_Capture_Time" descricao="Reactive Max Demand Time (Q2) T4" obis_completo="4-1.0.6.6.4.255-5" hex="0100060604FF"/>
+    <tela doc="235" codigo="6.6.0" abnt="35" nome="Reactive_Q2_Energy_Maximum_Demand_Total_Capture_Time" descricao="Reactive Max Demand Time (Q2) Total" obis_completo="4-1.0.6.6.0.255-5" hex="0100060600FF"/>
+    <tela doc="236" codigo="7.6.1" abnt="134" nome="Reactive_Q3_Energy_Maximum_Demand_T1_Capture_Time" descricao="Reactive Max Demand Time (Q3) T1" obis_completo="4-1.0.7.6.1.255-5" hex="0100070601FF"/>
+    <tela doc="237" codigo="7.6.2" abnt="138" nome="Reactive_Q3_Energy_Maximum_Demand_T2_Capture_Time" descricao="Reactive Max Demand Time (Q3) T2" obis_completo="4-1.0.7.6.2.255-5" hex="0100070602FF"/>
+    <tela doc="238" codigo="7.6.3" abnt="136" nome="Reactive_Q3_Energy_Maximum_Demand_T3_Capture_Time" descricao="Reactive Max Demand Time (Q3) T3" obis_completo="4-1.0.7.6.3.255-5" hex="0100070603FF"/>
+    <tela doc="239" codigo="7.6.4" abnt="139" nome="Reactive_Q3_Energy_Maximum_Demand_T4_Capture_Time" descricao="Reactive Max Demand Time (Q3) T4" obis_completo="4-1.0.7.6.4.255-5" hex="0100070604FF"/>
+    <tela doc="240" codigo="7.6.0" abnt="162" nome="Reactive_Q3_Energy_Maximum_Demand_Total_Capture_Time" descricao="Reactive Max Demand Time (Q3) Total" obis_completo="4-1.0.7.6.0.255-5" hex="0100070600FF"/>
+    <tela doc="241" codigo="8.6.1" abnt="13E" nome="Reactive_Q4_Energy_Maximum_Demand_T1_Capture_Time" descricao="Reactive Max Demand Time (Q4) T1" obis_completo="4-1.0.8.6.1.255-5" hex="0100080601FF"/>
+    <tela doc="242" codigo="8.6.2" abnt="13F" nome="Reactive_Q4_Energy_Maximum_Demand_T2_Capture_Time" descricao="Reactive Max Demand Time (Q4) T2" obis_completo="4-1.0.8.6.2.255-5" hex="0100080602FF"/>
+    <tela doc="243" codigo="8.6.3" abnt="13H" nome="Reactive_Q4_Energy_Maximum_Demand_T3_Capture_Time" descricao="Reactive Max Demand Time (Q4) T3" obis_completo="4-1.0.8.6.3.255-5" hex="0100080603FF"/>
+    <tela doc="244" codigo="8.6.4" abnt="13L" nome="Reactive_Q4_Energy_Maximum_Demand_T4_Capture_Time" descricao="Reactive Max Demand Time (Q4) T4" obis_completo="4-1.0.8.6.4.255-5" hex="0100080604FF"/>
+    <tela doc="245" codigo="8.6.0" abnt="132" nome="Reactive_Q4_Energy_Maximum_Demand_Total_Capture_Time" descricao="Reactive Max Demand Time (Q4) Total" obis_completo="4-1.0.8.6.0.255-5" hex="0100080600FF"/>
+    <tela doc="246" codigo="128.6.1" abnt="69" nome="DMCR_T1_DateTime" descricao="DMCR Time T1" obis_completo="4-1.0.128.6.1.255-5" hex="0100800601FF"/>
+    <tela doc="247" codigo="128.6.2" abnt="71" nome="DMCR_T2_DateTime" descricao="DMCR Time T2" obis_completo="4-1.0.128.6.2.255-5" hex="0100800602FF"/>
+    <tela doc="248" codigo="128.6.3" abnt="70" nome="DMCR_T3_DateTime" descricao="DMCR Time T3" obis_completo="4-1.0.128.6.3.255-5" hex="0100800603FF"/>
+    <tela doc="249" codigo="128.6.4" abnt="7A" nome="DMCR_T4_DateTime" descricao="DMCR Time T4" obis_completo="4-1.0.128.6.4.255-5" hex="0100800604FF"/>
+    <tela doc="250" codigo="128.6.0" abnt="78" nome="DMCR_Total_DateTime" descricao="DMCR Time Total" obis_completo="4-1.0.128.6.0.255-5" hex="0100800600FF"/>
+    <tela doc="251" codigo="96.54.4" abnt="32" nome="BatteryStatus" descricao="Estado da Bateria" obis_completo="1-0.0.96.54.4.255-2" hex="0000603604FF"/>
+    <tela doc="252" codigo="1.4.0" abnt="16" nome="Active_Direct_Energy_Demand_Total_Last_Value" descricao="Active direct demand of last interval (+)" obis_completo="5|1.0.1.4.0.255|3" hex="0100010400FF"/>
+    <tela doc="253" codigo="5.4.0" abnt="40" nome="Reactive_Q1_Energy_Demand_Total_Last_Value" descricao="Reactive demand of last interval forward (Q1)" obis_completo="5|1.0.5.4.0.255|3" hex="0100050400FF"/>
+    <tela doc="254" codigo="2.4.0" abnt="116" nome="Active_Reverse_Energy_Demand_Total_Last_Value" descricao="Active reverse demand of last interval (-)" obis_completo="5|1.0.2.4.0.255|3" hex="0100020400FF"/>
+    <tela doc="255" codigo="7.4.0" abnt="140" nome="Reactive_Q3_Energy_Demand_Total_Last_Value" descricao="Reactive demand of last interval reverse (Q3)" obis_completo="5|1.0.7.4.0.255|3" hex="0100070400FF"/>
+    <tela doc="256" codigo="13.160.0" abnt="93" nome="Power_Factor_Last_Interval" descricao="Power factor of last demand interval" obis_completo="3|1.0.13.160.0.255|2" hex="01000DA000FF"/>
+    <tela doc="258" codigo="C.6.3" nome="Tensão da bateria" descricao="Tensão da bateria" obis_completo="3-0.0.96.6.3.255-2" hex="0000600603FF"/>
+    <tela doc="259" codigo="15.2.1" nome="Active_Accumulated_Maximum_Demand_T1" descricao="Active Accumulated Max Demand (|Q1+Q4|+|Q2+Q3|) T1" obis_completo="3-1.0.15.2.1.255-2" hex="01000F0201FF"/>
+    <tela doc="260" codigo="15.2.2" nome="Active_Accumulated_Maximum_Demand_T2" descricao="Active Accumulated Max Demand (|Q1+Q4|+|Q2+Q3|) T2" obis_completo="3-1.0.15.2.2.255-2" hex="01000F0202FF"/>
+    <tela doc="261" codigo="15.2.3" nome="Active_Accumulated_Maximum_Demand_T3" descricao="Active Accumulated Max Demand (|Q1+Q4|+|Q2+Q3|) T3" obis_completo="3-1.0.15.2.3.255-2" hex="01000F0203FF"/>
+    <tela doc="262" codigo="15.2.4" nome="Active_Accumulated_Maximum_Demand_T4" descricao="Active Accumulated Max Demand (|Q1+Q4|+|Q2+Q3|) T4" obis_completo="3-1.0.15.2.4.255-2" hex="01000F0204FF"/>
+    <tela doc="263" codigo="15.2.0" nome="Active_Accumulated_Maximum_Demand_Total" descricao="Active Accumulated Max Demand (|Q1+Q4|+|Q2+Q3|) Total" obis_completo="3-1.0.15.2.0.255-2" hex="01000F0200FF"/>
+    <tela doc="264" codigo="10.2.1" nome="Apparent Accumulated Max Demand (-) T1" descricao="Apparent Accumulated Max Demand (-) T1" obis_completo="3-1.0.10.2.1.255-2" hex="01000A0201FF"/>
+    <tela doc="265" codigo="10.2.2" nome="Apparent Accumulated Max Demand (-) T2" descricao="Apparent Accumulated Max Demand (-) T2" obis_completo="3-1.0.10.2.2.255-2" hex="01000A0202FF"/>
+    <tela doc="266" codigo="10.2.3" nome="Apparent Accumulated Max Demand (-) T3" descricao="Apparent Accumulated Max Demand (-) T3" obis_completo="3-1.0.10.2.3.255-2" hex="01000A0203FF"/>
+    <tela doc="267" codigo="10.2.4" nome="Apparent Accumulated Max Demand (-) T4" descricao="Apparent Accumulated Max Demand (-) T4" obis_completo="3-1.0.10.2.4.255-2" hex="01000A0204FF"/>
+    <tela doc="268" codigo="10.2.0" nome="Apparent Accumulated Max Demand (-) Total" descricao="Apparent Accumulated Max Demand (-) Total" obis_completo="3-1.0.10.2.0.255-2" hex="01000A0200FF"/>
+    <tela doc="269" codigo="9.2.1" nome="Apparent Accumulated Max Demand (+) T1" descricao="Apparent Accumulated Max Demand (+) T1" obis_completo="3-1.0.9.2.1.255-2" hex="0100090201FF"/>
+    <tela doc="270" codigo="9.2.2" nome="Apparent Accumulated Max Demand (+) T2" descricao="Apparent Accumulated Max Demand (+) T2" obis_completo="3-1.0.9.2.2.255-2" hex="0100090202FF"/>
+    <tela doc="271" codigo="9.2.3" nome="Apparent Accumulated Max Demand (+) T3" descricao="Apparent Accumulated Max Demand (+) T3" obis_completo="3-1.0.9.2.3.255-2" hex="0100090203FF"/>
+    <tela doc="272" codigo="9.2.4" nome="Apparent Accumulated Max Demand (+) T4" descricao="Apparent Accumulated Max Demand (+) T4" obis_completo="3-1.0.9.2.4.255-2" hex="0100090204FF"/>
+    <tela doc="273" codigo="9.2.0" nome="Apparent Accumulated Max Demand (+) Total" descricao="Apparent Accumulated Max Demand (+) Total" obis_completo="3-1.0.9.2.0.255-2" hex="0100090200FF"/>
+    <tela doc="274" codigo="10.6.1" nome="Apparent_Reverse_Energy_Maximum_Demand_T1_Value" descricao="Apparent Max Demand (-) T1" obis_completo="4-1.0.10.6.1.255-2" hex="01000A0601FF"/>
+    <tela doc="275" codigo="10.6.2" nome="Apparent_Reverse_Energy_Maximum_Demand_T2_Value" descricao="Apparent Max Demand (-) T2" obis_completo="4-1.0.10.6.2.255-2" hex="01000A0602FF"/>
+    <tela doc="276" codigo="10.6.3" nome="Apparent_Reverse_Energy_Maximum_Demand_T3_Value" descricao="Apparent Max Demand (-) T3" obis_completo="4-1.0.10.6.3.255-2" hex="01000A0603FF"/>
+    <tela doc="277" codigo="10.6.4" nome="Apparent_Reverse_Energy_Maximum_Demand_T4_Value" descricao="Apparent Max Demand (-) T4" obis_completo="4-1.0.10.6.4.255-2" hex="01000A0604FF"/>
+    <tela doc="278" codigo="10.6.0" nome="Apparent_Reverse_Energy_Maximum_Demand_Total_Value" descricao="Apparent Max Demand (-) Total" obis_completo="4-1.0.10.6.0.255-2" hex="01000A0600FF"/>
+    <tela doc="279" codigo="10.6.1" nome="Apparent_Reverse_Energy_Maximum_Demand_T1_Capture_Time" descricao="Apparent Max Demand (-) Time T1" obis_completo="4-1.0.10.6.1.255-5" hex="01000A0601FF"/>
+    <tela doc="280" codigo="10.6.2" nome="Apparent_Reverse_Energy_Maximum_Demand_T2_Capture_Time" descricao="Apparent Max Demand (-) Time T2" obis_completo="4-1.0.10.6.2.255-5" hex="01000A0602FF"/>
+    <tela doc="281" codigo="10.6.3" nome="Apparent_Reverse_Energy_Maximum_Demand_T3_Capture_Time" descricao="Apparent Max Demand (-) Time T3" obis_completo="4-1.0.10.6.3.255-5" hex="01000A0603FF"/>
+    <tela doc="282" codigo="10.6.4" nome="Apparent_Reverse_Energy_Maximum_Demand_T4_Capture_Time" descricao="Apparent Max Demand (-) Time T4" obis_completo="4-1.0.10.6.4.255-5" hex="01000A0604FF"/>
+    <tela doc="283" codigo="10.6.0" nome="Apparent_Reverse_Energy_Maximum_Demand_Total_Capture_Time" descricao="Apparent Max Demand (-) Time Total" obis_completo="4-1.0.10.6.0.255-5" hex="01000A0600FF"/>
+    <tela doc="284" codigo="9.6.1" nome="Apparent_Direct_Energy_Maximum_Demand_T1_Value" descricao="Apparent Max Demand (+) T1" obis_completo="4-1.0.9.6.1.255-2" hex="0100090601FF"/>
+    <tela doc="285" codigo="9.6.2" nome="Apparent_Direct_Energy_Maximum_Demand_T2_Value" descricao="Apparent Max Demand (+) T2" obis_completo="4-1.0.9.6.2.255-2" hex="0100090602FF"/>
+    <tela doc="286" codigo="9.6.3" nome="Apparent_Direct_Energy_Maximum_Demand_T3_Value" descricao="Apparent Max Demand (+) T3" obis_completo="4-1.0.9.6.3.255-2" hex="0100090603FF"/>
+    <tela doc="287" codigo="9.6.4" nome="Apparent_Direct_Energy_Maximum_Demand_T4_Value" descricao="Apparent Max Demand (+) T4" obis_completo="4-1.0.9.6.4.255-2" hex="0100090604FF"/>
+    <tela doc="288" codigo="9.6.0" nome="Apparent_Direct_Energy_Maximum_Demand_Total_Value" descricao="Apparent Max Demand (+) Total" obis_completo="4-1.0.9.6.0.255-2" hex="0100090600FF"/>
+    <tela doc="289" codigo="9.6.1" nome="Apparent_Direct_Energy_Maximum_Demand_T1_Capture_Time" descricao="Apparent Max Demand (+) Time T1" obis_completo="4-1.0.9.6.1.255-5" hex="0100090601FF"/>
+    <tela doc="290" codigo="9.6.2" nome="Apparent_Direct_Energy_Maximum_Demand_T2_Capture_Time" descricao="Apparent Max Demand (+) Time T2" obis_completo="4-1.0.9.6.2.255-5" hex="0100090602FF"/>
+    <tela doc="291" codigo="9.6.3" nome="Apparent_Direct_Energy_Maximum_Demand_T3_Capture_Time" descricao="Apparent Max Demand (+) Time T3" obis_completo="4-1.0.9.6.3.255-5" hex="0100090603FF"/>
+    <tela doc="292" codigo="9.6.4" nome="Apparent_Direct_Energy_Maximum_Demand_T4_Capture_Time" descricao="Apparent Max Demand (+) Time T4" obis_completo="4-1.0.9.6.4.255-5" hex="0100090604FF"/>
+    <tela doc="293" codigo="9.6.0" nome="Apparent_Direct_Energy_Maximum_Demand_Total_Capture_Time" descricao="Apparent Max Demand (+) Time Total" obis_completo="4-1.0.9.6.0.255-5" hex="0100090600FF"/>
+    <tela doc="294" codigo="15.6.1" nome="Active_Total_Energy_Maximum_Demand_T1_Value" descricao="Maximum Demand Active Energy Combined T1 (|+A|+|-A|)" obis_completo="4-1.0.15.6.1.255-2" hex="01000F0601FF"/>
+    <tela doc="295" codigo="15.6.1" nome="Active_Total_Energy_Maximum_Demand_T1_Capture_Time" descricao="Maximum Demand Active Energy Combined T1 (|+A|+|-A|) Time" obis_completo="4-1.0.15.6.1.255-5" hex="01000F0601FF"/>
+    <tela doc="296" codigo="15.6.2" nome="Active_Total_Energy_Maximum_Demand_T2_Value" descricao="Maximum Demand Active Energy Combined T2 (|+A|+|-A|)" obis_completo="4-1.0.15.6.2.255-2" hex="01000F0602FF"/>
+    <tela doc="297" codigo="15.6.2" nome="Active_Total_Energy_Maximum_Demand_T2_Capture_Time" descricao="Maximum Demand Active Energy Combined T2 (|+A|+|-A|) Time" obis_completo="4-1.0.15.6.2.255-5" hex="01000F0602FF"/>
+    <tela doc="298" codigo="15.6.3" nome="Active_Total_Energy_Maximum_Demand_T3_Value" descricao="Maximum Demand Active Energy Combined T3 (|+A|+|-A|)" obis_completo="4-1.0.15.6.3.255-2" hex="01000F0603FF"/>
+    <tela doc="299" codigo="15.6.3" nome="Active_Total_Energy_Maximum_Demand_T3_Capture_Time" descricao="Maximum Demand Active Energy Combined T3 (|+A|+|-A|) Time" obis_completo="4-1.0.15.6.3.255-5" hex="01000F0603FF"/>
+    <tela doc="300" codigo="15.6.4" nome="Active_Total_Energy_Maximum_Demand_T4_Value" descricao="Maximum Demand Active Energy Combined T4 (|+A|+|-A|)" obis_completo="4-1.0.15.6.4.255-2" hex="01000F0604FF"/>
+    <tela doc="301" codigo="15.6.4" nome="Active_Total_Energy_Maximum_Demand_T4_Capture_Time" descricao="Maximum Demand Active Energy Combined T4 (|+A|+|-A|) Time" obis_completo="4-1.0.15.6.4.255-5" hex="01000F0604FF"/>
+    <tela doc="302" codigo="15.6.0" nome="Active_Total_Energy_Maximum_Demand_Total_Value" descricao="Maximum Demand Active Energy Combined Total (|+A|+|-A|)" obis_completo="4-1.0.15.6.0.255-2" hex="01000F0600FF"/>
+    <tela doc="303" codigo="15.6.0" nome="Active_Total_Energy_Maximum_Demand_Total_Capture_Time" descricao="Maximum Demand Active Energy Combined Total (|+A|+|-A|) Time" obis_completo="4-1.0.15.6.0.255-5" hex="01000F0600FF"/>
+    <tela doc="304" codigo="4.6.1" nome="Reactive_Reverse_Energy_Maximum_Demand_T1_Value" descricao="Maximum Demand Reactive Energy (-R) T1" obis_completo="4-1.0.4.6.1.255-2" hex="0100040601FF"/>
+    <tela doc="305" codigo="4.6.1" nome="Reactive_Reverse_Energy_Maximum_Demand_T1_Capture_Time" descricao="Maximum Demand Reactive Energy (-R) T1 Time" obis_completo="4-1.0.4.6.1.255-5" hex="0100040601FF"/>
+    <tela doc="306" codigo="4.6.2" nome="Reactive_Reverse_Energy_Maximum_Demand_T2_Value" descricao="Maximum Demand Reactive Energy (-R) T2" obis_completo="4-1.0.4.6.2.255-2" hex="0100040602FF"/>
+    <tela doc="307" codigo="4.6.2" nome="Reactive_Reverse_Energy_Maximum_Demand_T2_Capture_Time" descricao="Maximum Demand Reactive Energy (-R) T2 Time" obis_completo="4-1.0.4.6.2.255-5" hex="0100040602FF"/>
+    <tela doc="308" codigo="4.6.3" nome="Reactive_Reverse_Energy_Maximum_Demand_T3_Value" descricao="Maximum Demand Reactive Energy (-R) T3" obis_completo="4-1.0.4.6.3.255-2" hex="0100040603FF"/>
+    <tela doc="309" codigo="4.6.3" nome="Reactive_Reverse_Energy_Maximum_Demand_T3_Capture_Time" descricao="Maximum Demand Reactive Energy (-R) T3 Time" obis_completo="4-1.0.4.6.3.255-5" hex="0100040603FF"/>
+    <tela doc="310" codigo="4.6.4" nome="Reactive_Reverse_Energy_Maximum_Demand_T4_Value" descricao="Maximum Demand Reactive Energy (-R) T4" obis_completo="4-1.0.4.6.4.255-2" hex="0100040604FF"/>
+    <tela doc="311" codigo="4.6.4" nome="Reactive_Reverse_Energy_Maximum_Demand_T4_Capture_Time" descricao="Maximum Demand Reactive Energy (-R) T4 Time" obis_completo="4-1.0.4.6.4.255-5" hex="0100040604FF"/>
+    <tela doc="312" codigo="4.6.0" nome="Reactive_Reverse_Energy_Maximum_Demand_Total_Value" descricao="Maximum Demand Reactive Energy (-R) Total" obis_completo="4-1.0.4.6.0.255-2" hex="0100040600FF"/>
+    <tela doc="313" codigo="4.6.0" nome="Reactive_Reverse_Energy_Maximum_Demand_Total_Capture_Time" descricao="Maximum Demand Reactive Energy (-R) Total Time" obis_completo="4-1.0.4.6.0.255-5" hex="0100040600FF"/>
+    <tela doc="314" codigo="3.6.1" nome="Reactive_Direct_Energy_Maximum_Demand_T1_Value" descricao="Maximum Demand Reactive Energy (+R) T1" obis_completo="4-1.0.3.6.1.255-2" hex="0100030601FF"/>
+    <tela doc="315" codigo="3.6.1" nome="Reactive_Direct_Energy_Maximum_Demand_T1_Capture_Time" descricao="Maximum Demand Reactive Energy (+R) T1 Time" obis_completo="4-1.0.3.6.1.255-5" hex="0100030601FF"/>
+    <tela doc="316" codigo="3.6.2" nome="Reactive_Direct_Energy_Maximum_Demand_T2_Value" descricao="Maximum Demand Reactive Energy (+R) T2" obis_completo="4-1.0.3.6.2.255-2" hex="0100030602FF"/>
+    <tela doc="317" codigo="3.6.2" nome="Reactive_Direct_Energy_Maximum_Demand_T2_Capture_Time" descricao="Maximum Demand Reactive Energy (+R) T2 Time" obis_completo="4-1.0.3.6.2.255-5" hex="0100030602FF"/>
+    <tela doc="318" codigo="3.6.3" nome="Reactive_Direct_Energy_Maximum_Demand_T3_Value" descricao="Maximum Demand Reactive Energy (+R) T3" obis_completo="4-1.0.3.6.3.255-2" hex="0100030603FF"/>
+    <tela doc="319" codigo="3.6.3" nome="Reactive_Direct_Energy_Maximum_Demand_T3_Capture_Time" descricao="Maximum Demand Reactive Energy (+R) T3 Time" obis_completo="4-1.0.3.6.3.255-5" hex="0100030603FF"/>
+    <tela doc="320" codigo="3.6.4" nome="Reactive_Direct_Energy_Maximum_Demand_T4_Value" descricao="Maximum Demand Reactive Energy (+R) T4" obis_completo="4-1.0.3.6.4.255-2" hex="0100030604FF"/>
+    <tela doc="321" codigo="3.6.4" nome="Reactive_Direct_Energy_Maximum_Demand_T4_Capture_Time" descricao="Maximum Demand Reactive Energy (+R) T4 Time" obis_completo="4-1.0.3.6.4.255-5" hex="0100030604FF"/>
+    <tela doc="322" codigo="3.6.0" nome="Reactive_Direct_Energy_Maximum_Demand_Total_Value" descricao="Maximum Demand Reactive Energy (+R) Total" obis_completo="4-1.0.3.6.0.255-2" hex="0100030600FF"/>
+    <tela doc="323" codigo="3.6.0" nome="Reactive_Direct_Energy_Maximum_Demand_Total_Capture_Time" descricao="Maximum Demand Reactive Energy (+R) Total Time" obis_completo="4-1.0.3.6.0.255-5" hex="0100030600FF"/>
+    <tela doc="324" codigo="4.2.1" nome="Reactive Accumulated Max Demand (-) T1" descricao="Reactive Accumulated Max Demand (-) T1" obis_completo="3-1.0.4.2.1.255-2" hex="0100040201FF"/>
+    <tela doc="325" codigo="4.2.2" nome="Reactive Accumulated Max Demand (-) T2" descricao="Reactive Accumulated Max Demand (-) T2" obis_completo="3-1.0.4.2.2.255-2" hex="0100040202FF"/>
+    <tela doc="326" codigo="4.2.3" nome="Reactive Accumulated Max Demand (-) T3" descricao="Reactive Accumulated Max Demand (-) T3" obis_completo="3-1.0.4.2.3.255-2" hex="0100040203FF"/>
+    <tela doc="327" codigo="4.2.4" nome="Reactive Accumulated Max Demand (-) T4" descricao="Reactive Accumulated Max Demand (-) T4" obis_completo="3-1.0.4.2.4.255-2" hex="0100040204FF"/>
+    <tela doc="328" codigo="4.2.0" nome="Reactive Accumulated Max Demand (-) Total" descricao="Reactive Accumulated Max Demand (-) Total" obis_completo="3-1.0.4.2.0.255-2" hex="0100040200FF"/>
+    <tela doc="329" codigo="3.2.1" nome="Reactive Accumulated Max Demand (+) T1" descricao="Reactive Accumulated Max Demand (+) T1" obis_completo="3-1.0.3.2.1.255-2" hex="0100030201FF"/>
+    <tela doc="330" codigo="3.2.2" nome="Reactive Accumulated Max Demand (+) T2" descricao="Reactive Accumulated Max Demand (+) T2" obis_completo="3-1.0.3.2.2.255-2" hex="0100030202FF"/>
+    <tela doc="331" codigo="3.2.3" nome="Reactive Accumulated Max Demand (+) T3" descricao="Reactive Accumulated Max Demand (+) T3" obis_completo="3-1.0.3.2.3.255-2" hex="0100030203FF"/>
+    <tela doc="332" codigo="3.2.4" nome="Reactive Accumulated Max Demand (+) T4" descricao="Reactive Accumulated Max Demand (+) T4" obis_completo="3-1.0.3.2.4.255-2" hex="0100030204FF"/>
+    <tela doc="333" codigo="3.2.0" nome="Reactive Accumulated Max Demand (+) Total" descricao="Reactive Accumulated Max Demand (+) Total" obis_completo="3-1.0.3.2.0.255-2" hex="0100030200FF"/>
+    <tela doc="334" codigo="16.8.1" nome="Active_Resultant_Energy_T1_Value" descricao="Active Energy(|+A|-|-A|) Net T1" obis_completo="3-1.0.16.8.1.255-2" hex="0100100801FF"/>
+    <tela doc="335" codigo="16.8.2" nome="Active_Resultant_Energy_T2_Value" descricao="Active Energy(|+A|-|-A|) Net T2" obis_completo="3-1.0.16.8.2.255-2" hex="0100100802FF"/>
+    <tela doc="336" codigo="16.8.3" nome="Active_Resultant_Energy_T3_Value" descricao="Active Energy(|+A|-|-A|) Net T3" obis_completo="3-1.0.16.8.3.255-2" hex="0100100803FF"/>
+    <tela doc="337" codigo="16.8.4" nome="Active_Resultant_Energy_T4_Value" descricao="Active Energy(|+A|-|-A|) Net T4" obis_completo="3-1.0.16.8.4.255-2" hex="0100100804FF"/>
+    <tela doc="338" codigo="16.8.0" nome="Active_Total_Energy_Total_Value" descricao="Active Energy(|+A|-|-A|) Net Total" obis_completo="3-1.0.16.8.0.255-2" hex="0100100800FF"/>
+    <tela doc="339" codigo="15.8.1" nome="Active_Total_Energy_T1_Value" descricao="Active Energy(|+A|+|-A|) Net T1" obis_completo="3-1.0.15.8.1.255-2" hex="01000F0801FF"/>
+    <tela doc="340" codigo="15.8.2" nome="Active_Total_Energy_T2_Value" descricao="Active Energy(|+A|+|-A|) Net T2" obis_completo="3-1.0.15.8.2.255-2" hex="01000F0802FF"/>
+    <tela doc="341" codigo="15.8.3" nome="Active_Total_Energy_T3_Value" descricao="Active Energy(|+A|+|-A|) Net T3" obis_completo="3-1.0.15.8.3.255-2" hex="01000F0803FF"/>
+    <tela doc="342" codigo="15.8.4" nome="Active_Total_Energy_T4_Value" descricao="Active Energy(|+A|+|-A|) Net T4" obis_completo="3-1.0.15.8.4.255-2" hex="01000F0804FF"/>
+    <tela doc="343" codigo="15.8.0" nome="Active_Total_Energy_Total_Value" descricao="Active Energy(|+A|+|-A|) Net Total" obis_completo="3-1.0.15.8.0.255-2" hex="01000F0800FF"/>
+    <tela doc="345" codigo="10.8.1" nome="Apparent_Reverse_Energy_T1_Value" descricao="Apparent Energy (-VA) (Q2+Q3) T1" obis_completo="3-1.0.10.8.1.255-2" hex="01000A0801FF"/>
+    <tela doc="346" codigo="10.8.2" nome="Apparent_Reverse_Energy_T2_Value" descricao="Apparent Energy (-VA) (Q2+Q3) T2" obis_completo="3-1.0.10.8.2.255-2" hex="01000A0802FF"/>
+    <tela doc="347" codigo="10.8.3" nome="Apparent_Reverse_Energy_T3_Value" descricao="Apparent Energy (-VA) (Q2+Q3) T3" obis_completo="3-1.0.10.8.3.255-2" hex="01000A0803FF"/>
+    <tela doc="348" codigo="10.8.4" nome="Apparent_Reverse_Energy_T4_Value" descricao="Apparent Energy (-VA) (Q2+Q3) T4" obis_completo="3-1.0.10.8.4.255-2" hex="01000A0804FF"/>
+    <tela doc="349" codigo="10.8.0" nome="Apparent_Reverse_Energy_Total_Value" descricao="Apparent Energy (-VA) (Q2+Q3) Total" obis_completo="3-1.0.10.8.0.255-2" hex="01000A0800FF"/>
+    <tela doc="350" codigo="9.8.1" nome="Apparent_Direct_Energy_T1_Value" descricao="Apparent Energy (+VA) (Q1+Q4) T1" obis_completo="3-1.0.9.8.1.255-2" hex="0100090801FF"/>
+    <tela doc="351" codigo="9.8.2" nome="Apparent_Direct_Energy_T2_Value" descricao="Apparent Energy (+VA) (Q1+Q4) T2" obis_completo="3-1.0.9.8.2.255-2" hex="0100090802FF"/>
+    <tela doc="352" codigo="9.8.3" nome="Apparent_Direct_Energy_T3_Value" descricao="Apparent Energy (+VA) (Q1+Q4) T3" obis_completo="3-1.0.9.8.3.255-2" hex="0100090803FF"/>
+    <tela doc="353" codigo="9.8.4" nome="Apparent_Direct_Energy_T4_Value" descricao="Apparent Energy (+VA) (Q1+Q4) T4" obis_completo="3-1.0.9.8.4.255-2" hex="0100090804FF"/>
+    <tela doc="354" codigo="9.8.0" nome="Apparent_Direct_Energy_Total_Value" descricao="Apparent Energy (+VA) (Q1+Q4) Total" obis_completo="3-1.0.9.8.0.255-2" hex="0100090800FF"/>
+    <tela doc="355" codigo="4.8.1" nome="Reactive_Reverse_Energy_T1_Value" descricao="Reactive Energy (-R) (Q3+Q4) T1" obis_completo="3-1.0.4.8.1.255-2" hex="0100040801FF"/>
+    <tela doc="356" codigo="4.8.2" nome="Reactive_Reverse_Energy_T2_Value" descricao="Reactive Energy (-R) (Q3+Q4) T2" obis_completo="3-1.0.4.8.2.255-2" hex="0100040802FF"/>
+    <tela doc="357" codigo="4.8.3" nome="Reactive_Reverse_Energy_T3_Value" descricao="Reactive Energy (-R) (Q3+Q4) T3" obis_completo="3-1.0.4.8.3.255-2" hex="0100040803FF"/>
+    <tela doc="358" codigo="4.8.4" nome="Reactive_Reverse_Energy_T4_Value" descricao="Reactive Energy (-R) (Q3+Q4) T4" obis_completo="3-1.0.4.8.4.255-2" hex="0100040804FF"/>
+    <tela doc="359" codigo="4.8.0" nome="Reactive_Reverse_Energy_Total_Value" descricao="Reactive Energy (-R) (Q3+Q4) Total" obis_completo="3-1.0.4.8.0.255-2" hex="0100040800FF"/>
+    <tela doc="360" codigo="3.8.1" nome="Reactive_Direct_Energy_T1_Value" descricao="Reactive Energy (+R) (Q1+Q2) T1" obis_completo="3-1.0.3.8.1.255-2" hex="0100030801FF"/>
+    <tela doc="361" codigo="3.8.2" nome="Reactive_Direct_Energy_T2_Value" descricao="Reactive Energy (+R) (Q1+Q2) T2" obis_completo="3-1.0.3.8.2.255-2" hex="0100030802FF"/>
+    <tela doc="362" codigo="3.8.3" nome="Reactive_Direct_Energy_T3_Value" descricao="Reactive Energy (+R) (Q1+Q2) T3" obis_completo="3-1.0.3.8.3.255-2" hex="0100030803FF"/>
+    <tela doc="363" codigo="3.8.4" nome="Reactive_Direct_Energy_T4_Value" descricao="Reactive Energy (+R) (Q1+Q2) T4" obis_completo="3-1.0.3.8.4.255-2" hex="0100030804FF"/>
+    <tela doc="364" codigo="3.8.0" nome="Reactive_Direct_Energy_Total_Value" descricao="Reactive Energy (+R) (Q1+Q2) Total" obis_completo="3-1.0.3.8.0.255-2" hex="0100030800FF"/>
+    <tela doc="365" codigo="15.7.0" nome="Active_Power_Total" descricao="Instantaneous Active Power (|+A|+|-A|) Total" obis_completo="3-1.0.15.7.0.255-2" hex="01000F0700FF"/>
+    <tela doc="366" codigo="35.7.0" nome="Active_Power_Total_L1" descricao="Instantaneous Active Power (|Q1+Q4|+|Q2+Q3|) in Phase L1" obis_completo="3-1.0.35.7.0.255-2" hex="0100230700FF"/>
+    <tela doc="367" codigo="55.7.0" nome="Active_Power_Total_L2" descricao="Instantaneous Active Power (|Q1+Q4|+|Q2+Q3|) in Phase L2" obis_completo="3-1.0.55.7.0.255-2" hex="0100370700FF"/>
+    <tela doc="368" codigo="75.7.0" nome="Active_Power_Total_L3" descricao="Instantaneous Active Power (|Q1+Q4|+|Q2+Q3|) in Phase L3" obis_completo="3-1.0.75.7.0.255-2" hex="01004B0700FF"/>
+    <tela doc="369" codigo="26.7.0" nome="Reactive_Power_Q2_L1" descricao="Instantaneous Reactive Power (Q2) in Phase L1" obis_completo="3-1.0.26.7.0.255-2" hex="01001A0700FF"/>
+    <tela doc="370" codigo="27.7.0" nome="Reactive_Power_Q3_L1" descricao="Instantaneous Reactive Power (Q3) in Phase L1" obis_completo="3-1.0.27.7.0.255-2" hex="01001B0700FF"/>
+    <tela doc="371" codigo="28.7.0" nome="Reactive_Power_Q4_L1" descricao="Instantaneous Reactive Power (Q4) in Phase L1" obis_completo="3-1.0.28.7.0.255-2" hex="01001C0700FF"/>
+    <tela doc="372" codigo="25.7.0" nome="Reactive_Power_Q1_L1" descricao="Instantaneous Reactive Power (Q1) in Phase L1" obis_completo="3-1.0.25.7.0.255-2" hex="0100190700FF"/>
+    <tela doc="373" codigo="45.7.0" nome="Reactive_Power_Q1_L2" descricao="Instantaneous Reactive Power (Q1) in Phase L2" obis_completo="3-1.0.45.7.0.255-2" hex="01002D0700FF"/>
+    <tela doc="374" codigo="65.7.0" nome="Reactive_Power_Q1_L3" descricao="Instantaneous Reactive Power (Q1) in Phase L3" obis_completo="3-1.0.65.7.0.255-2" hex="0100410700FF"/>
+    <tela doc="375" codigo="5.7.0" nome="Reactive_Power_Q1" descricao="Instantaneous Reactive Power (Q1) Total" obis_completo="3-1.0.5.7.0.255-2" hex="0100050700FF"/>
+    <tela doc="376" codigo="46.7.0" nome="Reactive_Power_Q2_L2" descricao="Instantaneous Reactive Power (Q2) in Phase L2" obis_completo="3-1.0.46.7.0.255-2" hex="01002E0700FF"/>
+    <tela doc="377" codigo="66.7.0" nome="Reactive_Power_Q2_L3" descricao="Instantaneous Reactive Power (Q2) in Phase L3" obis_completo="3-1.0.66.7.0.255-2" hex="0100420700FF"/>
+    <tela doc="378" codigo="6.7.0" nome="Reactive_Power_Q2" descricao="Instantaneous Reactive Power (Q2) Total" obis_completo="3-1.0.6.7.0.255-2" hex="0100060700FF"/>
+    <tela doc="379" codigo="47.7.0" nome="Reactive_Power_Q3_L2" descricao="Instantaneous Reactive Power (Q3) in Phase L2" obis_completo="3-1.0.47.7.0.255-2" hex="01002F0700FF"/>
+    <tela doc="380" codigo="67.7.0" nome="Reactive_Power_Q3_L3" descricao="Instantaneous Reactive Power (Q3) in Phase L3" obis_completo="3-1.0.67.7.0.255-2" hex="0100430700FF"/>
+    <tela doc="381" codigo="7.7.0" nome="Reactive_Power_Q3" descricao="Instantaneous Reactive Power (Q3) Total" obis_completo="3-1.0.7.7.0.255-2" hex="0100070700FF"/>
+    <tela doc="382" codigo="8.7.0" nome="Reactive_Power_Q4" descricao="Instantaneous Reactive Power (Q4) in Phase L1" obis_completo="3-1.0.8.7.0.255-2" hex="0100080700FF"/>
+    <tela doc="383" codigo="48.7.0" nome="Reactive_Power_Q4_L2" descricao="Instantaneous Reactive Power (Q4) in Phase L2" obis_completo="3-1.0.48.7.0.255-2" hex="0100300700FF"/>
+    <tela doc="384" codigo="68.7.0" nome="Reactive_Power_Q4_L3" descricao="Instantaneous Reactive Power (Q4) in Phase L3" obis_completo="3-1.0.68.7.0.255-2" hex="0100440700FF"/>
+    <tela doc="386" codigo="CA.C7" nome="Reason for Disconnect" descricao="Reason for Disconnect" obis_completo="1-0.0.146.129.18.255-2" hex="0000928112FF"/>
+    <tela doc="387" codigo="C3.2C" nome="Threshold for Current Unbalance" descricao="Threshold for Current Unbalance" obis_completo="3-1.0.11.39.0.255-2" hex="01000B2700FF"/>
+    <!-- Itens da tabela oficial sem codigo DLMS/ABNT definido (so OBIS completo).
+         Preencha o atributo codigo="" quando o codigo for conhecido:
+         257  Energia ativa desde a ultima fatura        3-1.0.1.9.0.255-2     0100010900FF
+         344  Active Power (|Q1+Q4|-|Q2+Q3|) Total       3-1.0.16.7.0.255-2    0100100700FF
+         385  Meter IO Port Detection Status             1-0.0.97.97.1.255-2   0000616101FF -->
+</telas>

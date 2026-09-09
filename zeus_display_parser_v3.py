@@ -9,6 +9,7 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Tuple, Optional
 from enum import IntEnum
 from pathlib import Path
+import os
 import sys
 
 # AXDR tags used by ZEUS-NG DISP.CMD.7 according to the product spec.
@@ -469,6 +470,283 @@ DISPLAY_CODES = {
     "DMCR_T4_DateTime": "DMCR_T4_DateTime",
     "DMCR_Total_DateTime": "DMCR_Total_DateTime",
 }
+
+# ---------------------------------------------------------------------------
+# CARREGAMENTO EXTERNO DAS TELAS (XML / JSON)
+# ---------------------------------------------------------------------------
+# O mapa acima e o padrao embutido (fallback). Se existir um arquivo de telas
+# ao lado do script/executavel (ou apontado por --telas / variavel ZEUS_TELAS),
+# ele e carregado por cima, permitindo atualizar as telas sem mexer no codigo.
+#
+# Formato XML aceito (qualquer uma das formas abaixo):
+#
+#   <telas modo="mesclar">                  <!-- modo: mesclar (padrao) | substituir -->
+#       <tela codigo="1.8.0" nome="Active_Direct_Energy_Total_Value"/>
+#       <tela codigo="03"    nome="Active_Direct_Energy_Total_Value"/>
+#       <tela nome="Voltage_L1">
+#           <codigo>32.7.0</codigo>
+#           <codigo>UA</codigo>
+#       </tela>
+#   </telas>
+#
+# Atributos aceitos: codigo/code/obis/id e nome/name/descricao/description.
+# Formato JSON aceito: {"1.8.0": "Nome", "03": "Nome"}
+#                  ou  {"modo": "mesclar", "telas": {...}}
+#
+# Se o arquivo NAO existir (ou estiver invalido), o parser continua funcionando
+# normalmente com o mapa embutido.
+# ---------------------------------------------------------------------------
+
+DISPLAY_CODES_BUILTIN: Dict[str, str] = dict(DISPLAY_CODES)  # copia do mapa embutido
+DISPLAY_CODES_SOURCE: str = "built-in"                       # de onde veio o mapa atual
+
+# Nomes procurados automaticamente, na ordem
+DISPLAY_CODES_FILENAMES = (
+    "telas.xml", "display_codes.xml",
+    "telas.json", "display_codes.json",
+)
+DISPLAY_CODES_ENV_VAR = "ZEUS_TELAS"
+
+# Atributos lidos como CODIGO (todos os presentes viram chave da mesma tela)
+_CODE_KEYS = ("codigo", "code", "abnt", "obis", "id", "chave", "key")
+# Atributos lidos como NOME, em ordem de prioridade
+_NAME_KEYS = ("nome", "name", "tela", "valor", "value", "descricao", "description")
+# Atributos apenas informativos (guardados em DISPLAY_INFO, nao viram codigo/nome)
+_INFO_KEYS = ("descricao", "description", "doc", "obis_completo", "hex", "unidade", "obs")
+
+# Informacoes extras de cada tela, indexadas pelo codigo: descricao em portugues,
+# OBIS completo, hex, numero no documento. Preenchido por load_display_codes().
+DISPLAY_INFO: Dict[str, Dict[str, str]] = {}
+
+
+def _display_codes_search_dirs() -> List[Path]:
+    """Diretorios onde o arquivo de telas e procurado (script, exe/_MEIPASS, cwd)."""
+    dirs: List[Path] = []
+    congelado = bool(getattr(sys, "frozen", False))
+
+    # No .exe, a pasta do executavel vem PRIMEIRO: assim um telas.xml colocado
+    # ao lado do .exe substitui o que foi embutido no build (atualizar sem recompilar).
+    if congelado:
+        try:
+            dirs.append(Path(sys.executable).resolve().parent)
+        except Exception:
+            pass
+    try:
+        dirs.append(Path(__file__).resolve().parent)
+    except Exception:
+        pass
+    meipass = getattr(sys, "_MEIPASS", None)          # PyInstaller (one-file)
+    if meipass:
+        dirs.append(Path(meipass))
+    if not congelado:
+        try:
+            dirs.append(Path(sys.executable).resolve().parent)
+        except Exception:
+            pass
+    try:
+        dirs.append(Path.cwd())
+    except Exception:
+        pass
+
+    unicos: List[Path] = []
+    for d in dirs:
+        if d not in unicos:
+            unicos.append(d)
+    return unicos
+
+
+def find_display_codes_file(path: Optional[str] = None) -> Optional[Path]:
+    """Localiza o arquivo de telas. Retorna None se nenhum existir."""
+    candidatos: List[Path] = []
+    if path:
+        candidatos.append(Path(path))
+    env_path = os.environ.get(DISPLAY_CODES_ENV_VAR)
+    if env_path:
+        candidatos.append(Path(env_path))
+    for pasta in _display_codes_search_dirs():
+        for nome in DISPLAY_CODES_FILENAMES:
+            candidatos.append(pasta / nome)
+
+    for cand in candidatos:
+        try:
+            if cand.is_file():
+                return cand.resolve()
+        except OSError:
+            continue
+    return None
+
+
+def _first_attr(elem, chaves) -> Optional[str]:
+    """Primeiro atributo presente, na ordem de prioridade de `chaves`."""
+    baixo = {str(k).lower(): str(v).strip() for k, v in elem.attrib.items()}
+    for chave in chaves:
+        if baixo.get(chave):
+            return baixo[chave]
+    return None
+
+
+def _all_attrs(elem, chaves) -> List[str]:
+    """Todos os atributos presentes cujas chaves estao em `chaves`."""
+    baixo = {str(k).lower(): str(v).strip() for k, v in elem.attrib.items()}
+    return [baixo[c] for c in chaves if baixo.get(c) and baixo[c] != "-"]
+
+
+def _parse_display_codes_xml(caminho: Path) -> Tuple[Dict[str, str], str, Dict[str, Dict[str, str]]]:
+    """Le o XML de telas. Retorna (mapa, modo, info)."""
+    import xml.etree.ElementTree as ET
+
+    raiz = ET.parse(str(caminho)).getroot()
+    modo = (_first_attr(raiz, ("modo", "mode")) or "mesclar").lower()
+    mapa: Dict[str, str] = {}
+    info: Dict[str, Dict[str, str]] = {}
+
+    for elem in raiz.iter():
+        if elem is raiz:
+            continue
+
+        nome = _first_attr(elem, _NAME_KEYS)
+        codigos: List[str] = _all_attrs(elem, _CODE_KEYS)   # ex.: codigo="1.8.0" abnt="03"
+
+        # filhos <codigo>/<code> e <nome>/<name>
+        for filho in list(elem):
+            tag = filho.tag.lower()
+            texto = (filho.text or "").strip()
+            if not texto or texto == "-":
+                continue
+            if tag in _CODE_KEYS:
+                codigos.append(texto)
+            elif tag in _NAME_KEYS and not nome:
+                nome = texto
+
+        # forma <tela codigo="1.8.0">Nome</tela>
+        if not nome and codigos:
+            texto = (elem.text or "").strip()
+            if texto:
+                nome = texto
+
+        # forma <tela nome="X">1.8.0</tela>
+        if nome and not codigos:
+            texto = (elem.text or "").strip()
+            if texto and texto != "-":
+                codigos.append(texto)
+
+        if not (nome and codigos):
+            continue
+
+        extras = {k: v for k, v in ((c, _first_attr(elem, (c,))) for c in _INFO_KEYS) if v}
+        for cod in codigos:
+            if cod and cod not in mapa:      # dentro do arquivo, vale a 1a ocorrencia
+                mapa[cod] = nome
+                if extras:
+                    info[cod] = dict(extras)
+
+    return mapa, modo, info
+
+
+def _parse_display_codes_json(caminho: Path) -> Tuple[Dict[str, str], str, Dict[str, Dict[str, str]]]:
+    """Le o JSON de telas. Retorna (mapa, modo)."""
+    import json
+
+    dados = json.loads(caminho.read_text(encoding="utf-8"))
+    modo = "mesclar"
+    if isinstance(dados, dict) and any(k in dados for k in ("telas", "screens", "display_codes")):
+        modo = str(dados.get("modo") or dados.get("mode") or "mesclar").lower()
+        dados = dados.get("telas") or dados.get("screens") or dados.get("display_codes") or {}
+
+    mapa: Dict[str, str] = {}
+    if isinstance(dados, dict):
+        for cod, nome in dados.items():
+            if str(cod).strip() and str(nome).strip():
+                mapa[str(cod).strip()] = str(nome).strip()
+    elif isinstance(dados, list):  # [{"codigo": "...", "nome": "..."}, ...]
+        for item in dados:
+            if not isinstance(item, dict):
+                continue
+            baixo = {str(k).lower(): v for k, v in item.items()}
+            nome = next((str(baixo[k]).strip() for k in _NAME_KEYS if baixo.get(k)), None)
+            cod = next((str(baixo[k]).strip() for k in _CODE_KEYS if baixo.get(k)), None)
+            if cod and nome and cod not in mapa:
+                mapa[cod] = nome
+    return mapa, modo, {}
+
+
+def _reset_display_codes(motivo: str = "", verbose: bool = False) -> Dict[str, str]:
+    global DISPLAY_CODES_SOURCE
+    DISPLAY_CODES.clear()
+    DISPLAY_CODES.update(DISPLAY_CODES_BUILTIN)
+    DISPLAY_INFO.clear()
+    DISPLAY_CODES_SOURCE = "built-in"
+    if motivo:
+        print(motivo)
+    elif verbose:
+        print("[TELAS] Nenhum arquivo externo encontrado; usando mapa embutido.")
+    return DISPLAY_CODES
+
+
+def load_display_codes(path: Optional[str] = None, verbose: bool = False) -> Dict[str, str]:
+    """
+    Carrega o mapa de telas de um arquivo externo (XML ou JSON), se existir.
+
+    Se o arquivo nao existir ou estiver invalido, mantem o mapa embutido
+    (DISPLAY_CODES_BUILTIN) e o parser continua funcionando normalmente.
+    Retorna o proprio dicionario DISPLAY_CODES (atualizado no lugar).
+    """
+    global DISPLAY_CODES_SOURCE
+
+    arquivo = find_display_codes_file(path)
+    if arquivo is None:
+        return _reset_display_codes(verbose=verbose)
+
+    try:
+        if arquivo.suffix.lower() == ".json":
+            mapa, modo, info = _parse_display_codes_json(arquivo)
+        else:
+            mapa, modo, info = _parse_display_codes_xml(arquivo)
+    except Exception as e:
+        return _reset_display_codes(f"[TELAS] Falha ao ler '{arquivo}': {e}. Usando mapa embutido.")
+
+    if not mapa:
+        return _reset_display_codes(f"[TELAS] Arquivo '{arquivo}' nao tem telas validas. Usando mapa embutido.")
+
+    DISPLAY_CODES.clear()
+    if modo not in ("substituir", "replace", "exclusivo"):
+        DISPLAY_CODES.update(DISPLAY_CODES_BUILTIN)   # o externo tem prioridade
+    DISPLAY_CODES.update(mapa)
+    DISPLAY_INFO.clear()
+    DISPLAY_INFO.update(info)
+    DISPLAY_CODES_SOURCE = str(arquivo)
+    if verbose:
+        print(f"[TELAS] {len(mapa)} telas carregadas de: {arquivo} (modo={modo})")
+    return DISPLAY_CODES
+
+
+def get_screen_info(codigo: str) -> Dict[str, str]:
+    """Informacoes extras da tela (descricao, doc, obis_completo, hex), se o arquivo trouxer."""
+    return DISPLAY_INFO.get(codigo, {})
+
+
+def export_display_codes(path: Optional[str] = None) -> Path:
+    """Gera um XML com as telas atuais, para servir de base de edicao/atualizacao."""
+    from xml.sax.saxutils import quoteattr
+
+    destino = Path(path) if path else (Path(__file__).resolve().parent / "telas.xml")
+    linhas = ['<?xml version="1.0" encoding="utf-8"?>', '<telas modo="mesclar">']
+    for cod, nome in DISPLAY_CODES.items():
+        attrs = [f"codigo={quoteattr(str(cod))}", f"nome={quoteattr(str(nome))}"]
+        for chave, valor in DISPLAY_INFO.get(cod, {}).items():
+            if chave != "nome":
+                attrs.append(f"{chave}={quoteattr(str(valor))}")
+        linhas.append("    <tela " + " ".join(attrs) + "/>")
+    linhas.append("</telas>")
+    destino.write_text("\n".join(linhas) + "\n", encoding="utf-8")
+    return destino
+
+
+# Carrega automaticamente na importacao; nunca deixa o modulo quebrar por causa disso.
+try:
+    load_display_codes()
+except Exception as _e:  # pragma: no cover - seguranca extra
+    print(f"[TELAS] Erro inesperado ao carregar telas externas: {_e}. Usando mapa embutido.")
 
 @dataclass
 class DisplayBuffer:
@@ -1185,7 +1463,19 @@ def parse_frame_hex(frame_hex: str, verbose: bool = True, html_path: Optional[st
 
 def main():
     args = sys.argv[1:]
-    
+
+    # --- TELAS EXTERNAS: --telas <arquivo.xml|.json> ---
+    if args and args[0].lower() in ("--telas", "--screens", "-t"):
+        if len(args) < 2:
+            return print("Uso: python script.py --telas telas.xml [frame hex]")
+        load_display_codes(args[1], verbose=True)
+        args = args[2:]
+
+    # --- TELAS EXTERNAS: --exportar-telas [arquivo.xml] ---
+    if args and args[0].lower() in ("--exportar-telas", "--export-telas", "--export-screens"):
+        destino = export_display_codes(args[1] if len(args) > 1 else None)
+        return print(f"[TELAS] {len(DISPLAY_CODES)} telas exportadas para: {destino}")
+
     if args and args[0].lower() in ("--byte", "-b", "byte"):
         return print_byte_diagram(args[1]) if len(args) > 1 else print("Uso: python script.py --byte 0x7C")
         

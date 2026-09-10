@@ -634,6 +634,13 @@ def _parse_display_codes_xml(caminho: Path) -> Tuple[Dict[str, str], str, Dict[s
             continue
 
         extras = {k: v for k, v in ((c, _first_attr(elem, (c,))) for c in _INFO_KEYS) if v}
+        # guarda os codigos equivalentes para poder alternar DLMS <-> ABNT
+        cod_dlms = _first_attr(elem, ("codigo", "code", "obis", "id"))
+        cod_abnt = _first_attr(elem, ("abnt",))
+        if cod_dlms and cod_dlms != "-":
+            extras["codigo_dlms"] = cod_dlms
+        if cod_abnt and cod_abnt != "-":
+            extras["codigo_abnt"] = cod_abnt
         for cod in codigos:
             if cod and cod not in mapa:      # dentro do arquivo, vale a 1a ocorrencia
                 mapa[cod] = nome
@@ -764,6 +771,7 @@ class DisplayBuffer:
     char_details: List[str] = field(default_factory=list)  # desenho de 7 segmentos de cada caractere de OBIS/Data
     html: str = ""  # pagina HTML com o display desenhado (7 segmentos) nas posicoes corretas
     unit_bits: int = 0  # bits crus de magnitude (payload[16..17]): unidade e MODULAR (k/M + V/W/A/r + h)
+    raw_segment: bytes = b""  # payload cru do segmento: preserva o desenho de bytes NAO mapeados
 
     # --- MERGE V1: GET SCREEN NAME ---
     def get_screen_name(self) -> str:
@@ -1242,6 +1250,74 @@ class DLMSDisplayParser:
         return cls._html_document("".join(obis_parts), "".join(data_parts), display)
 
     @classmethod
+    def _row_html_from_text(cls, texto: str, posicoes: int, size: str,
+                            bytes_crus: Optional[List[int]] = None) -> str:
+        """
+        Monta uma linha do LCD em 7 segmentos a partir do texto ja formatado.
+        Usado ao reconfigurar a tela: mantem o MESMO desenho do parse do frame.
+
+        `bytes_crus` sao os bytes que vieram no frame para essa linha. Um
+        caractere que nao existe no mapa (byte fora da tabela, que o parser
+        mostra como "?") e desenhado com o BYTE CRU daquela posicao - assim da
+        para enxergar os segmentos que o medidor acendeu mesmo em algo nao
+        mapeado, que e justamente o que ajuda na analise.
+        """
+        inverso = {}
+        for byte_val, char in cls._LCD_NUMBER_MAP.items():
+            inverso.setdefault(char, byte_val)
+
+        digitos: List[str] = []
+        seps: List[str] = []
+        for ch in str(texto):
+            if ch in ".:":
+                if seps:
+                    seps[-1] = ch
+                continue
+            digitos.append(ch)
+            seps.append("")
+
+        faltam = posicoes - len(digitos)
+        if faltam > 0:                       # alinha a direita, apagando o resto
+            digitos = [" "] * faltam + digitos
+            seps = [""] * faltam + seps
+        elif faltam < 0:
+            digitos, seps = digitos[faltam:], seps[faltam:]
+
+        crus = list(bytes_crus or [])
+        if len(crus) < posicoes:             # alinha os crus do mesmo jeito
+            crus = [None] * (posicoes - len(crus)) + crus
+        else:
+            crus = crus[-posicoes:] if posicoes else []
+
+        partes = []
+        for i, (ch, sep) in enumerate(zip(digitos, seps)):
+            if ch in inverso:
+                byte_val = inverso[ch]
+            elif i < len(crus) and crus[i] is not None:
+                byte_val = crus[i]           # nao mapeado: desenha o que veio no frame
+            else:
+                byte_val = 0x00
+            partes.append(cls._digit_html(byte_val, size))
+            if sep:
+                partes.append(cls._sep_html(sep, size))
+        return "".join(partes)
+
+    @classmethod
+    def _build_html_segments(cls, display: "DisplayBuffer") -> str:
+        """
+        Documento do display desenhado em 7 segmentos a partir de obis/data,
+        usando os bytes do frame como base para o que nao for mapeavel.
+        """
+        seg = display.raw_segment
+        obis_crus = [seg[i] for i in (6, 5, 4, 3, 2, 1)] if len(seg) >= 16 else None
+        data_crus = [seg[i] for i in (15, 14, 13, 12, 11, 10, 9, 8)] if len(seg) >= 16 else None
+        return cls._html_document(
+            cls._row_html_from_text(display.obis, 6, "md", obis_crus),
+            cls._row_html_from_text(display.data, 8, "lg", data_crus),
+            display,
+        )
+
+    @classmethod
     def _build_html_simple(cls, display: "DisplayBuffer") -> str:
         return cls._html_document(
             f'<div style="font:24px monospace; color:#ff3b30;">{display.obis or "&nbsp;"}</div>',
@@ -1378,7 +1454,7 @@ class DLMSDisplayParser:
         for i in range(6): flags2 |= cls._bit(payload[7], i) << i
         for i, bit in enumerate([4, 3, 2, 1, 0], 6): flags2 |= cls._bit(payload[0], bit) << i
 
-        result = DisplayBuffer(obis, data, tariff_num, nic_signal, nic_type, quadrant, unit, flags, flags2, warnings, char_details, unit_bits=magnitude)
+        result = DisplayBuffer(obis, data, tariff_num, nic_signal, nic_type, quadrant, unit, flags, flags2, warnings, char_details, unit_bits=magnitude, raw_segment=bytes(payload))
         result.html = cls._build_html(payload, result)
         return result
 
@@ -1438,6 +1514,261 @@ class DLMSDisplayParser:
         except Exception as e:
             print(f"[ERRO] Falha ao fazer parse: {e}")
             return None
+
+
+# ---------------------------------------------------------------------------
+# CONFIGURACAO DE TELA  (Set_Display_Setup - objeto DLMS 1|0.0.96.60.4.255)
+# ---------------------------------------------------------------------------
+# A configuracao NAO e por tela: e uma estrutura global e cada tela herda dela
+# conforme a familia da grandeza (energia ou demanda). Os campos usados aqui:
+#
+#   1/3  integer-places        casas inteiras   (energia 5-8, demanda 4-8)
+#   2/4  decimal-places        casas decimais   (0-3: o LCD so tem 3 pontos)
+#   7/8  unity                 k (10^3) ou M (10^6)
+#   9    obis-type             0 DLMS - 1 ABNT (so muda o codigo exibido)
+#   10   primary-secondary     0 secundario (cru) - 1 primario (aplica TC x TP)
+#   11   use-left-zeros        preenche com zeros a esquerda
+#
+# Conta que leva o registrador ate o LCD (aritmetica inteira, nesta ordem):
+#   campo = (registrador * TCxTP * 10^dec) // escala   e depois   % 10^(int+dec)
+# O truncamento vem ANTES do modulo, e o modulo e sobre o campo inteiro.
+# ---------------------------------------------------------------------------
+
+ESCALA_MAGNITUDE = {"k": 1_000, "M": 1_000_000}
+FAMILIA_MIN_INTEIROS = {"energia": 5, "demanda": 4}
+MAX_POSICOES_LCD = 8        # MAIN_LCD_1..MAIN_LCD_8
+MAX_DECIMAIS_LCD = 3        # DP_1, DP_2, DP_3
+
+# Unidade e um bitmask por composicao de simbolos, nao um enum
+UNIT_BITMASK: Tuple[Tuple[int, str], ...] = (
+    (0, "k"), (1, "M"), (2, "V"), (3, "W"), (4, "A"),
+    (5, "r"), (6, "h"), (10, "Hz"), (11, "°C"), (12, "%"),
+)
+
+
+class ObisType(IntEnum):
+    DLMS = 0
+    ABNT = 1
+    ABNT_CODE = 2
+    CRONOS = 3
+
+
+OBIS_TYPE_NAMES = {
+    ObisType.DLMS: "DLMS", ObisType.ABNT: "ABNT",
+    ObisType.ABNT_CODE: "ABNTCode", ObisType.CRONOS: "Cronos",
+}
+
+
+@dataclass
+class DisplaySetup:
+    """Campos de Set_Display_Setup que afetam como o valor aparece no LCD."""
+    integer_places: int = 4
+    decimal_places: int = 2
+    magnitude: str = "k"                    # "k" ou "M"
+    primary: bool = False                   # False = secundario, True = primario
+    rtc: Tuple[int, int] = (1, 1)           # (numerador, denominador)
+    rtp: Tuple[int, int] = (1, 1)
+    obis_type: int = int(ObisType.DLMS)
+    use_left_zeros: bool = False
+    # Familia e OPCIONAL: serve so para checar o minimo de casas inteiras do
+    # medidor (energia 5, demanda 4). Com None valem apenas as regras fisicas
+    # do LCD - o que esta na tela e o que esta na tela.
+    familia: Optional[str] = None
+
+    def validar(self) -> List[str]:
+        """Erros que o software deve recusar antes de mandar para o medidor."""
+        erros: List[str] = []
+        if not 0 <= self.decimal_places <= MAX_DECIMAIS_LCD:
+            erros.append(f"decimais fora da faixa 0-{MAX_DECIMAIS_LCD} (o LCD so tem 3 pontos)")
+        if self.integer_places + self.decimal_places > MAX_POSICOES_LCD:
+            erros.append(f"inteiros + decimais > {MAX_POSICOES_LCD} (o campo principal tem 8 posicoes)")
+        if self.familia:
+            minimo = FAMILIA_MIN_INTEIROS.get(self.familia)
+            if minimo is not None and self.integer_places < minimo:
+                erros.append(f"familia '{self.familia}' exige no minimo {minimo} casas inteiras")
+        if self.integer_places > 8:
+            erros.append("inteiros acima de 8")
+        if self.magnitude not in ESCALA_MAGNITUDE:
+            erros.append("magnitude deve ser 'k' ou 'M'")
+        for nome, (num, den) in (("RTC", self.rtc), ("RTP", self.rtp)):
+            if num <= 0 or den <= 0:
+                erros.append(f"{nome} invalido: numerador e denominador devem ser > 0")
+        return erros
+
+
+def unidade_do_bitmask(mascara: int) -> str:
+    """Decodifica os dois bytes de unidade por composicao de simbolos."""
+    if mascara == 0xFFFF:
+        return "All"
+    return "".join(s for b, s in UNIT_BITMASK if (mascara >> b) & 1) or "None"
+
+
+def familia_da_tela(obis: str) -> str:
+    """
+    Familia de configuracao (energia/demanda) a que a tela pertence.
+
+    No OBIS A.B.C.D.E.F: C e a grandeza e D o tipo. Energia = D 8; demanda =
+    D 2 (acumulada) e D 6 (maxima). UFER (C=132) e reativo pelo OBIS mas segue
+    a familia ENERGIA na configuracao - por isso o minimo dele e 5 inteiros.
+    """
+    # frames em ABNT ("14") nao carregam C.D.E: traduz para o DLMS do telas.xml
+    equivalentes = codigos_da_tela(obis)
+    codigo = equivalentes.get("DLMS") or obis
+    partes = [p for p in (codigo or "").replace(":", ".").split(".") if p != ""]
+    if len(partes) >= 2:
+        try:
+            c, d = int(partes[0]), int(partes[1])
+        except ValueError:
+            return "energia"
+        if c == 132:                 # UFER: OBIS de reativo, familia de energia
+            return "energia"
+        if c == 128:                 # DMCR e DMCR acumulado
+            return "demanda"
+        if d in (2, 6):              # demanda acumulada / demanda maxima
+            return "demanda"
+        if d == 8:                   # energia
+            return "energia"
+    return "energia"
+
+
+def campo_do_display(registrador: int, *, familia: Optional[str] = None,
+                     inteiros: int, decimais: int,
+                     magnitude: str, rtc: Tuple[int, int] = (1, 1),
+                     rtp: Tuple[int, int] = (1, 1), primario: bool = False) -> int:
+    """Devolve o inteiro que ocupa as posicoes do LCD (aritmetica inteira exata)."""
+    setup = DisplaySetup(integer_places=inteiros, decimal_places=decimais,
+                         magnitude=magnitude, primary=primario, rtc=rtc, rtp=rtp,
+                         familia=familia)
+    erros = setup.validar()
+    if erros:
+        raise ValueError("; ".join(erros))
+
+    num, den = (rtc[0] * rtp[0], rtc[1] * rtp[1]) if primario else (1, 1)
+    campo = (int(registrador) * num * 10 ** decimais) // (den * ESCALA_MAGNITUDE[magnitude])
+    return campo % 10 ** (inteiros + decimais)
+
+
+def como_no_lcd(campo: int, inteiros: int, decimais: int, zeros_a_esquerda: bool = False) -> str:
+    """Formata o campo do jeito que aparece no visor."""
+    s = str(int(campo)).zfill(inteiros + decimais)
+    s = f"{s[:inteiros]}.{s[inteiros:]}" if decimais else s
+    if not zeros_a_esquerda:
+        i, _, f = s.partition(".")
+        i = i.lstrip("0") or "0"
+        s = f"{i}.{f}" if f else i
+    return s
+
+
+def magnitude_do_display(display: "DisplayBuffer") -> str:
+    """'M' se o bit de mega estiver aceso, senao 'k'."""
+    return "M" if display.unit_bits & (1 << 1) else "k"
+
+
+def valor_base_do_display(display: "DisplayBuffer") -> Optional[int]:
+    """
+    Reconstroi o valor do registrador (unidade base, Wh/varh) a partir do que
+    o frame mostrou. Retorna None em telas nao numericas (data, hora, serial).
+
+    ATENCAO: e uma reconstrucao parcial. Os digitos que o modulo cortou (virada
+    de tela) e o que o truncamento descartou nao voltam - o valor devolvido e o
+    que a janela do LCD alcancava naquele frame.
+    """
+    texto = (display.data or "").strip()
+    if not texto or ":" in texto:
+        return None
+    inteiro, _, frac = texto.partition(".")
+    if not (inteiro + frac).isdigit():
+        return None
+    campo = int(inteiro + frac)
+    escala = ESCALA_MAGNITUDE.get(magnitude_do_display(display), 1)
+    return campo * escala // (10 ** len(frac))
+
+
+def setup_do_frame(display: "DisplayBuffer") -> DisplaySetup:
+    """Configuracao que o frame recebido aparenta estar usando."""
+    texto = (display.data or "").strip()
+    inteiro, _, frac = texto.partition(".")
+    digitos_int = sum(c.isdigit() for c in inteiro)
+    familia = familia_da_tela(display.obis)
+
+    return DisplaySetup(
+        integer_places=digitos_int,
+        decimal_places=min(len(frac), MAX_DECIMAIS_LCD),
+        magnitude=magnitude_do_display(display),
+        primary=False,                       # o frame nao informa TC x TP
+        obis_type=obis_type_do_codigo(display.obis),
+        use_left_zeros=inteiro.startswith("0") and len(inteiro) > 1,
+        familia=familia,                     # informativo; nao restringe a UI
+    )
+
+
+def codigos_da_tela(codigo: str) -> Dict[str, str]:
+    """
+    Os codigos equivalentes da mesma tela: {'DLMS': '1.8.0', 'ABNT': '03'}.
+    Vem do telas.xml; volta vazio se a tela nao estiver no arquivo.
+    """
+    info = DISPLAY_INFO.get(codigo)
+    if not info:
+        return {}
+    return {k: v for k, v in (("DLMS", info.get("codigo_dlms", "")),
+                              ("ABNT", info.get("codigo_abnt", ""))) if v}
+
+
+def obis_type_do_codigo(codigo: str) -> int:
+    """Descobre se o codigo que veio no frame esta no formato DLMS ou ABNT."""
+    equivalentes = codigos_da_tela(codigo)
+    if equivalentes.get("ABNT") == codigo and equivalentes.get("DLMS") != codigo:
+        return int(ObisType.ABNT)
+    return int(ObisType.DLMS)
+
+
+def codigo_no_formato(codigo: str, obis_type: int) -> str:
+    """Traduz o codigo da tela para o formato pedido; devolve o original se nao souber."""
+    equivalentes = codigos_da_tela(codigo)
+    alvo = "ABNT" if int(obis_type) in (int(ObisType.ABNT), int(ObisType.ABNT_CODE)) else "DLMS"
+    return equivalentes.get(alvo) or codigo
+
+
+def aplicar_setup(display: "DisplayBuffer", setup: DisplaySetup,
+                  registrador: Optional[int] = None) -> "DisplayBuffer":
+    """
+    Devolve uma COPIA do display reformatada com outra configuracao de tela.
+    O display original nao e alterado - guarde-o para voltar ao que veio no frame.
+
+    `registrador` (unidade base) permite recalcular a partir de um valor
+    conhecido; se omitido, usa o que foi reconstruido do proprio frame.
+    """
+    import copy
+
+    novo = copy.deepcopy(display)
+    erros = setup.validar()
+    if erros:
+        novo.warnings = list(novo.warnings) + [f"Configuracao invalida: {'; '.join(erros)}"]
+        novo.html = DLMSDisplayParser._build_html_segments(novo)
+        return novo
+
+    # --- campo principal ---
+    base = registrador if registrador is not None else valor_base_do_display(display)
+    if base is not None:
+        campo = campo_do_display(
+            base, familia=setup.familia, inteiros=setup.integer_places,
+            decimais=setup.decimal_places, magnitude=setup.magnitude,
+            rtc=setup.rtc, rtp=setup.rtp, primario=setup.primary,
+        )
+        novo.data = como_no_lcd(campo, setup.integer_places, setup.decimal_places,
+                                setup.use_left_zeros)
+    # telas nao numericas (data/hora/serial) ficam como vieram
+
+    # --- magnitude: troca so o bit k/M, preserva V/W/A/r/h/Hz/C/% ---
+    bits = novo.unit_bits & ~0b11
+    bits |= (1 << 1) if setup.magnitude == "M" else (1 << 0)
+    novo.unit_bits = bits
+
+    # --- codigo exibido (DLMS x ABNT) ---
+    novo.obis = codigo_no_formato(display.obis, setup.obis_type)
+
+    novo.html = DLMSDisplayParser._build_html_segments(novo)
+    return novo
 
 def print_byte_diagram(raw_value: str) -> None:
     try: value = int(raw_value.strip().replace("0x", "").replace("0X", ""), 16)
